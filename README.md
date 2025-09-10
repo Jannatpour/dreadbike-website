@@ -4,7 +4,7 @@ A cinematic, production-ready landing page for DreadBike, a gritty/evil-themed m
 
 ## 🎨 Brand Identity
 
-**DreadBike** - *Unleash the Fear. Ride Dread.*
+**DreadBike** - _Unleash the Fear. Ride Dread._
 
 - **Pronunciation**: /drɛd/ → "dred"
 - **Meaning**: Fear / Terror, or respect & awe. Represents a bike so powerful it inspires fear and respect.
@@ -12,17 +12,18 @@ A cinematic, production-ready landing page for DreadBike, a gritty/evil-themed m
 
 ## 🎯 Color Palette
 
-| Role | Color | Hex Code |
-|------|-------|----------|
-| Background | Dark Charcoal Grey | `#1c1c1c` |
-| Text | Light Grey | `#f2f2f2` |
-| Accent Primary | Vibrant Orange | `#ff6600` |
-| Accent Secondary | Electric Blue | `#00aaff` |
-| Texture | Off-White Distressed | `#f8f8f8` |
+| Role             | Color                | Hex Code  |
+| ---------------- | -------------------- | --------- |
+| Background       | Dark Charcoal Grey   | `#1c1c1c` |
+| Text             | Light Grey           | `#f2f2f2` |
+| Accent Primary   | Vibrant Orange       | `#ff6600` |
+| Accent Secondary | Electric Blue        | `#00aaff` |
+| Texture          | Off-White Distressed | `#f8f8f8` |
 
 ## 🚀 Features
 
 ### Visual Effects & Animations
+
 - **Cinematic Hero Section** with dramatic logo entrance and particle effects
 - **Advanced Particle Systems** with 50+ floating particles and energy waves
 - **Morphing Background Shapes** with complex transformations
@@ -32,6 +33,7 @@ A cinematic, production-ready landing page for DreadBike, a gritty/evil-themed m
 - **Scroll-Triggered Animations** throughout all sections
 
 ### Custom Icons & Components
+
 - **Custom Icon System** with 9 different icon types
 - **Feature Icons**: Speed (⚡), Power (🔥), Fearless Design (💀)
 - **CTA Icons**: Book Tuning, View Services
@@ -39,6 +41,7 @@ A cinematic, production-ready landing page for DreadBike, a gritty/evil-themed m
 - **Animated Icons** with hover effects and micro-interactions
 
 ### Page Sections
+
 1. **Hero Section** - Full-screen cinematic experience with animated tagline
 2. **About Section** - Company description with enhanced visual effects
 3. **Features Section** - Three feature cards with custom icons and animations
@@ -89,18 +92,21 @@ styles/
 ## 🚀 Installation & Setup
 
 ### Prerequisites
-- Node.js 18+ 
+
+- Node.js 18+
 - npm or yarn
 
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
-   cd dreakbike-app
+   cd dreadbike-website
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    # or
@@ -108,6 +114,7 @@ styles/
    ```
 
 3. **Run the development server**
+
    ```bash
    npm run dev
    # or
@@ -129,11 +136,13 @@ npm start
 ## 🌐 Vercel Deployment
 
 ### Automatic Deployment
+
 1. Connect your GitHub repository to Vercel
 2. Vercel will automatically detect Next.js and deploy
 3. No additional configuration needed
 
 ### Manual Deployment
+
 ```bash
 # Install Vercel CLI
 npm i -g vercel
@@ -147,7 +156,9 @@ vercel
 ## 🎨 Customization
 
 ### Colors
+
 Update colors in `app/globals.css`:
+
 ```css
 :root {
   --background: #1c1c1c;
@@ -158,18 +169,20 @@ Update colors in `app/globals.css`:
 ```
 
 ### Icons
+
 Add new icons in `app/components/Icon.tsx`:
+
 ```typescript
 const iconPaths = {
-  'new-icon': (
-    <path d="..." fill="currentColor" />
-  ),
+  'new-icon': <path d='...' fill='currentColor' />,
   // ...
 };
 ```
 
 ### Animations
+
 Modify animations in `tailwind.config.ts`:
+
 ```typescript
 animation: {
   'custom-animation': 'customKeyframes 2s infinite',
@@ -211,6 +224,7 @@ keyframes: {
 ## 🎬 Animation Details
 
 ### Hero Section
+
 - Logo entrance with 3D rotation and scale
 - Staggered text animations with spring physics
 - Particle systems with 50+ floating elements
@@ -218,12 +232,14 @@ keyframes: {
 - Mouse-following glow effects
 
 ### Features Section
+
 - Card hover effects with 3D transforms
 - Icon animations with rotation and scale
 - Gradient text effects
 - Staggered entrance animations
 
 ### Gallery Section
+
 - Image hover effects with scale and overlay
 - Parallax scrolling effects
 - Smooth transitions between states
@@ -233,10 +249,12 @@ keyframes: {
 ### Common Issues
 
 1. **Hydration Mismatch**
+
    - Fixed by using deterministic calculations instead of Math.random()
    - All animations use index-based positioning
 
 2. **Performance Issues**
+
    - Reduced particle count on mobile devices
    - Optimized animation loops
    - Used GPU-accelerated transforms
@@ -253,6 +271,7 @@ This project is proprietary and confidential. All rights reserved.
 ## 🤝 Contributing
 
 This is a production-ready project. For modifications, please:
+
 1. Test thoroughly on multiple devices
 2. Maintain performance standards
 3. Follow TypeScript strict mode
@@ -264,4 +283,4 @@ For technical support or questions about the DreadBike landing page, please cont
 
 ---
 
-**DreadBike** - *Unleash the Fear. Ride Dread.*
+**DreadBike** - _Unleash the Fear. Ride Dread._
