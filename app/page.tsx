@@ -1,103 +1,504 @@
-import Image from "next/image";
+'use client';
+
+import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
+import {
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+} from 'framer-motion';
+import Hero from './components/Hero';
+import About from './components/About';
+import Features from './components/Features';
+import Gallery from './components/Gallery';
+import CTASection from './components/CTASection';
+import Footer from './components/Footer';
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [isLoading, setIsLoading] = useState(true);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [windowDimensions, setWindowDimensions] = useState({
+    width: 0,
+    height: 0,
+  });
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  const heroRef = useRef<HTMLElement>(null);
+
+  const { scrollYProgress: heroScroll } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
+
+  const heroY = useTransform(heroScroll, [0, 1], ['0%', '50%']);
+  const heroOpacity = useTransform(heroScroll, [0, 0.5], [1, 0]);
+  const heroScale = useTransform(heroScroll, [0, 0.5], [1, 1.1]);
+
+  useEffect(() => {
+    // Set window dimensions on client side
+    setWindowDimensions({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
+
+    // Simulate loading time
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    const handleResize = () => {
+      setWindowDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const handleViewServices = () => {
+    const featuresSection = document.getElementById('features');
+    if (featuresSection) {
+      featuresSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleBookTuning = () => {
+    // This function can be used to trigger booking modal or navigation
+    console.log('Book tuning clicked');
+  };
+
+  return (
+    <div className='min-h-screen bg-background text-foreground relative overflow-hidden'>
+      {/* Global Background Effects */}
+      <div className='fixed inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pointer-events-none' />
+      <div className="fixed inset-0 bg-[url('/images/texture-overlay.png')] opacity-5 mix-blend-overlay pointer-events-none" />
+
+      {/* Global Floating Particles - Mobile Optimized */}
+      {[...Array(15)].map((_, i) => (
+        <motion.div
+          key={`global-${i}`}
+          className='fixed w-1 h-1 bg-yellow-400/20 rounded-full pointer-events-none hidden md:block'
+          initial={{ opacity: 0 }}
+          animate={{
+            left: [`${20 + i * 5}%`, `${80 - i * 3}%`, `${20 + i * 5}%`],
+            top: [`${10 + i * 6}%`, `${90 - i * 4}%`, `${10 + i * 6}%`],
+            y: [0, -100, 0],
+            x: [0, (i % 2 === 0 ? 1 : -1) * 30, 0],
+            opacity: [0, 1, 0],
+            scale: [0, 1, 0],
+          }}
+          transition={{
+            duration: 8 + (i % 3) * 2,
+            repeat: Infinity,
+            delay: i * 0.5,
+            ease: 'easeInOut',
+          }}
+        />
+      ))}
+
+      {/* Mobile-Only Simplified Particles */}
+      {[...Array(5)].map((_, i) => (
+        <motion.div
+          key={`mobile-${i}`}
+          className='fixed w-1 h-1 bg-yellow-400/30 rounded-full pointer-events-none md:hidden'
+          initial={{ opacity: 0 }}
+          animate={{
+            left: [`${20 + i * 15}%`, `${80 - i * 10}%`, `${20 + i * 15}%`],
+            top: [`${20 + i * 12}%`, `${80 - i * 8}%`, `${20 + i * 12}%`],
+            y: [0, -50, 0],
+            opacity: [0, 0.8, 0],
+            scale: [0, 1, 0],
+          }}
+          transition={{
+            duration: 6 + i,
+            repeat: Infinity,
+            delay: i * 0.8,
+            ease: 'easeInOut',
+          }}
+        />
+      ))}
+
+      {/* Advanced Scroll-Triggered Effects */}
+      <motion.div
+        className='fixed inset-0 pointer-events-none z-10'
+        style={{
+          background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255, 255, 0, 0.1) 0%, transparent 50%)`,
+        }}
+      />
+
+      {/* Dynamic Grid Overlay */}
+      <motion.div
+        className='fixed inset-0 pointer-events-none opacity-5'
+        animate={{
+          backgroundPosition: ['0px 0px', '100px 100px', '0px 0px'],
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: 'linear',
+        }}
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(255, 255, 0, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 0, 0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '100px 100px',
+        }}
+      />
+
+      {/* Morphing Shapes Background */}
+      {[...Array(5)].map((_, i) => (
+        <motion.div
+          key={`morph-bg-${i}`}
+          className='fixed pointer-events-none opacity-10'
+          initial={{ opacity: 0 }}
+          animate={{
+            left: [`${10 + i * 20}%`, `${90 - i * 15}%`, `${10 + i * 20}%`],
+            top: [`${10 + i * 18}%`, `${90 - i * 12}%`, `${10 + i * 18}%`],
+            width: [
+              `${100 + i * 40}px`,
+              `${200 + i * 30}px`,
+              `${100 + i * 40}px`,
+            ],
+            height: [
+              `${100 + i * 35}px`,
+              `${180 + i * 25}px`,
+              `${100 + i * 35}px`,
+            ],
+            scale: [0.5, 1, 0.5],
+            borderRadius: [
+              '50% 50% 50% 50%',
+              '30% 70% 30% 70%',
+              '70% 30% 70% 30%',
+              '50% 50% 50% 50%',
+            ],
+            background: [
+              'radial-gradient(circle, rgba(255, 255, 0, 0.1) 0%, transparent 70%)',
+              'radial-gradient(ellipse, rgba(255, 255, 0, 0.15) 0%, transparent 70%)',
+              'radial-gradient(circle, rgba(255, 255, 0, 0.08) 0%, transparent 70%)',
+              'radial-gradient(ellipse, rgba(255, 255, 0, 0.12) 0%, transparent 70%)',
+            ],
+          }}
+          transition={{
+            duration: 15 + i * 3,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay: i * 2,
+          }}
+        />
+      ))}
+
+      {/* Advanced Energy Grid */}
+      <div className='fixed inset-0 pointer-events-none opacity-5'>
+        <motion.div
+          className='absolute inset-0'
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(255, 255, 0, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255, 255, 0, 0.1) 1px, transparent 1px),
+              linear-gradient(rgba(255, 255, 0, 0.05) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255, 255, 0, 0.05) 1px, transparent 1px)
+            `,
+            backgroundSize:
+              '100px 100px, 100px 100px, 200px 200px, 200px 200px',
+          }}
+          animate={{
+            backgroundPosition: [
+              '0px 0px, 0px 0px, 0px 0px, 0px 0px',
+              '100px 100px, 100px 100px, 200px 200px, 200px 200px',
+            ],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: 'linear',
+          }}
+        />
+      </div>
+
+      {/* Professional Floating Elements */}
+      {[...Array(6)].map((_, i) => (
+        <motion.div
+          key={`orb-${i}`}
+          className='fixed w-2 h-2 bg-yellow-400/40 rounded-full pointer-events-none'
+          initial={{
+            x: `${20 + i * 15}%`,
+            y: `${20 + i * 10}%`,
+            opacity: 0,
+            scale: 0,
+          }}
+          animate={{
+            y: [`${20 + i * 10}%`, `${80 - i * 5}%`, `${20 + i * 10}%`],
+            opacity: [0, 0.6, 0],
+            scale: [0, 1, 0],
+          }}
+          transition={{
+            duration: 8 + i * 2,
+            repeat: Infinity,
+            delay: i * 1.5,
+            ease: 'easeInOut',
+          }}
+        />
+      ))}
+
+      {/* Loading Screen */}
+      <AnimatePresence>
+        {isLoading && (
+          <motion.div
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className='fixed inset-0 z-50 bg-black flex items-center justify-center'
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+            {/* Animated Background */}
+            <div className='absolute inset-0 bg-gradient-to-br from-yellow-900/20 via-black to-yellow-900/20' />
+
+            {/* Professional Loading Indicators */}
+            {windowDimensions.width > 0 &&
+              [...Array(8)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className='absolute w-1 h-1 bg-yellow-400/60 rounded-full'
+                  initial={{
+                    x: `${20 + i * 10}%`,
+                    y: `${30 + i * 8}%`,
+                    opacity: 0,
+                  }}
+                  animate={{
+                    y: [`${30 + i * 8}%`, `${70 - i * 5}%`, `${30 + i * 8}%`],
+                    opacity: [0, 0.8, 0],
+                    scale: [0, 1, 0],
+                  }}
+                  transition={{
+                    duration: 3 + i * 0.5,
+                    repeat: Infinity,
+                    delay: i * 0.3,
+                    ease: 'easeInOut',
+                  }}
+                />
+              ))}
+
+            {/* Main Content */}
+            <div className='relative z-10 text-center'>
+              {/* Logo Animation */}
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 200,
+                  damping: 15,
+                  delay: 0.5,
+                }}
+                className='mb-12'
+              >
+                <Image
+                  src='/images/dreadbike-gritty-logo.png'
+                  alt='DreadBike'
+                  width={192}
+                  height={192}
+                  className='w-32 h-32 md:w-48 md:h-48 mx-auto drop-shadow-2xl'
+                />
+              </motion.div>
+
+              {/* Title Animation */}
+              <motion.h1
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 1, duration: 0.8 }}
+                className='text-6xl md:text-8xl font-black mb-8 tracking-tighter'
+              >
+                <motion.span
+                  initial={{ backgroundPosition: '0% 50%' }}
+                  animate={{ backgroundPosition: '100% 50%' }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'linear',
+                    delay: 1.5,
+                  }}
+                  className='bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 bg-clip-text text-transparent bg-300%'
+                >
+                  DREADBIKE
+                </motion.span>
+              </motion.h1>
+
+              {/* Tagline */}
+              <motion.p
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 1.5, duration: 0.8 }}
+                className='text-2xl md:text-3xl text-gray-300 font-bold tracking-wide mb-12'
+              >
+                <span className='text-yellow-400'>Unleash the Fear.</span>{' '}
+                <span className='text-white'>Ride Dread.</span>
+              </motion.p>
+
+              {/* Progress Bar */}
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: '100%' }}
+                transition={{ delay: 2, duration: 0.5 }}
+                className='w-80 h-2 bg-gray-800 rounded-full mx-auto mb-4 overflow-hidden'
+              >
+                <motion.div
+                  className='h-full bg-gradient-to-r from-yellow-500 to-yellow-400 rounded-full'
+                  initial={{ width: 0 }}
+                  animate={{ width: '100%' }}
+                  transition={{ duration: 2, delay: 2.5 }}
+                />
+              </motion.div>
+
+              {/* Loading Text */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 2.2 }}
+                className='text-gray-400 text-lg'
+              >
+                Forging your legend...
+              </motion.p>
+            </div>
+
+            {/* Glitch Effect Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: [0, 0.1, 0] }}
+              transition={{
+                duration: 0.1,
+                repeat: Infinity,
+                repeatDelay: 2,
+                delay: 3,
+              }}
+              className='absolute inset-0 bg-yellow-400/10 mix-blend-screen'
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Hero Section */}
+      <motion.section
+        ref={heroRef}
+        style={{ y: heroY, opacity: heroOpacity, scale: heroScale }}
+        className='relative'
+      >
+        <Hero onViewServices={handleViewServices} />
+      </motion.section>
+
+      {/* Section Transition Divider */}
+      <motion.div
+        className='h-32 bg-gradient-to-b from-transparent via-yellow-400/10 to-transparent'
+        initial={{ opacity: 0, scaleY: 0 }}
+        whileInView={{ opacity: 1, scaleY: 1 }}
+        transition={{ duration: 1, delay: 0.5 }}
+        viewport={{ once: true }}
+      />
+
+      {/* About Section */}
+      <motion.section
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, type: 'spring', stiffness: 100 }}
+        viewport={{ once: true }}
+        className='relative'
+      >
+        <About />
+      </motion.section>
+
+      {/* Section Transition Divider */}
+      <motion.div
+        className='h-32 bg-gradient-to-b from-transparent via-yellow-400/10 to-transparent'
+        initial={{ opacity: 0, scaleY: 0 }}
+        whileInView={{ opacity: 1, scaleY: 1 }}
+        transition={{ duration: 1, delay: 0.5 }}
+        viewport={{ once: true }}
+      />
+
+      {/* Features Section */}
+      <motion.section
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, type: 'spring', stiffness: 100 }}
+        viewport={{ once: true }}
+        className='relative'
+      >
+        <Features />
+      </motion.section>
+
+      {/* Section Transition Divider */}
+      <motion.div
+        className='h-32 bg-gradient-to-b from-transparent via-yellow-400/10 to-transparent'
+        initial={{ opacity: 0, scaleY: 0 }}
+        whileInView={{ opacity: 1, scaleY: 1 }}
+        transition={{ duration: 1, delay: 0.5 }}
+        viewport={{ once: true }}
+      />
+
+      {/* Gallery Section */}
+      <motion.section
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, type: 'spring', stiffness: 100 }}
+        viewport={{ once: true }}
+        className='relative'
+      >
+        <Gallery />
+      </motion.section>
+
+      {/* Section Transition Divider */}
+      <motion.div
+        className='h-32 bg-gradient-to-b from-transparent via-yellow-400/10 to-transparent'
+        initial={{ opacity: 0, scaleY: 0 }}
+        whileInView={{ opacity: 1, scaleY: 1 }}
+        transition={{ duration: 1, delay: 0.5 }}
+        viewport={{ once: true }}
+      />
+
+      {/* CTA Section */}
+      <motion.section
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, type: 'spring', stiffness: 100 }}
+        viewport={{ once: true }}
+        className='relative'
+      >
+        <CTASection onBookTuning={handleBookTuning} />
+      </motion.section>
+
+      {/* Section Transition Divider */}
+      <motion.div
+        className='h-32 bg-gradient-to-b from-transparent via-yellow-400/10 to-transparent'
+        initial={{ opacity: 0, scaleY: 0 }}
+        whileInView={{ opacity: 1, scaleY: 1 }}
+        transition={{ duration: 1, delay: 0.5 }}
+        viewport={{ once: true }}
+      />
+
+      {/* Footer */}
+      <motion.section
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, type: 'spring', stiffness: 100 }}
+        viewport={{ once: true }}
+        className='relative'
+      >
+        <Footer />
+      </motion.section>
     </div>
   );
 }

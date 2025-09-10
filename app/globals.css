@@ -1,26 +1,275 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #1c1c1c;
+  --foreground: #f2f2f2;
+  --card: #2a2a2a;
+  --card-foreground: #f2f2f2;
+  --popover: #2a2a2a;
+  --popover-foreground: #f2f2f2;
+  --primary: #ffff00;
+  --primary-foreground: #000000;
+  --secondary: #2a2a2a;
+  --secondary-foreground: #f2f2f2;
+  --muted: #3a3a3a;
+  --muted-foreground: #a0a0a0;
+  --accent: #ffff00;
+  --accent-secondary: #ffaa00;
+  --accent-foreground: #000000;
+  --destructive: #dc2626;
+  --border: #3a3a3a;
+  --input: #3a3a3a;
+  --ring: #ffff00;
+  --texture: #f8f8f8;
+  --radius: 0.5rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-black text-white font-sans;
+  font-feature-settings: 'rlig' 1, 'calt' 1;
+}
+
+/* Custom utilities for DreadBike theme */
+.bg-distress {
+  background-image: url('/images/texture-overlay.png');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+}
+
+.text-gritty {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.border-distressed {
+  border: 2px solid #333;
+  position: relative;
+}
+
+.border-distressed::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 0, 0.1),
+    transparent
+  );
+  border-radius: inherit;
+  z-index: -1;
+}
+
+/* 2025 Modern Animations */
+@keyframes gridMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(255, 255, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 255, 0, 0.6), 0 0 60px rgba(255, 255, 0, 0.3);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes neonGlow {
+  0%,
+  100% {
+    text-shadow: 0 0 5px #ffff00, 0 0 10px #ffff00, 0 0 15px #ffff00,
+      0 0 20px #ffff00;
+  }
+  50% {
+    text-shadow: 0 0 2px #ffff00, 0 0 5px #ffff00, 0 0 8px #ffff00,
+      0 0 12px #ffff00;
+  }
+}
+
+/* Modern 2025 Utilities */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+.neon-text {
+  animation: neonGlow 2s ease-in-out infinite;
+}
+
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cyber-grid {
+  background-image: linear-gradient(rgba(255, 255, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 0, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.holographic {
+  background: linear-gradient(45deg, #ffff00, #ffaa00, #ffff80, #ffdd00);
+  background-size: 400% 400%;
+  animation: gradientShift 3s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animation Delay Utilities */
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+
+.animation-delay-900 {
+  animation-delay: 900ms;
+}
+
+.animation-delay-1200 {
+  animation-delay: 1200ms;
+}
+
+/* Enhanced Gritty Effects */
+.text-gritty-enhanced {
+  text-shadow: 2px 2px 0px #000, 4px 4px 0px rgba(255, 255, 0, 0.5),
+    6px 6px 10px rgba(0, 0, 0, 0.8);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+/* Distressed Border Effect */
+.border-distressed-enhanced {
+  position: relative;
+  border: 2px solid transparent;
+}
+
+.border-distressed-enhanced::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  padding: 2px;
+  background: linear-gradient(
+    45deg,
+    #ffff00,
+    transparent,
+    #ffaa00,
+    transparent,
+    #ffff00
+  );
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+}
+
+/* Terror-themed hover effects */
+.hover-terror {
+  transition: all 0.3s ease;
+}
+
+.hover-terror:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(255, 255, 0, 0.5);
+  filter: brightness(1.1) contrast(1.1);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffff00;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ffaa00;
 }
