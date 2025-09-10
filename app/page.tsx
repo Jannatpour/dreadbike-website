@@ -83,13 +83,13 @@ export default function Home() {
   };
 
   return (
-    <div className='min-h-screen bg-background text-foreground relative overflow-hidden'>
+    <div className='min-h-screen bg-background text-foreground relative prevent-horizontal-scroll'>
       {/* Global Background Effects */}
       <div className='fixed inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pointer-events-none' />
       <div className="fixed inset-0 bg-[url('/images/texture-overlay.png')] opacity-5 mix-blend-overlay pointer-events-none" />
 
       {/* Global Floating Particles - Mobile Optimized */}
-      {[...Array(15)].map((_, i) => (
+      {[...Array(8)].map((_, i) => (
         <motion.div
           key={`global-${i}`}
           className='fixed w-1 h-1 bg-yellow-400/20 rounded-full pointer-events-none hidden md:block'
@@ -112,7 +112,7 @@ export default function Home() {
       ))}
 
       {/* Mobile-Only Simplified Particles */}
-      {[...Array(5)].map((_, i) => (
+      {[...Array(3)].map((_, i) => (
         <motion.div
           key={`mobile-${i}`}
           className='fixed w-1 h-1 bg-yellow-400/30 rounded-full pointer-events-none md:hidden'
@@ -162,7 +162,7 @@ export default function Home() {
       />
 
       {/* Morphing Shapes Background */}
-      {[...Array(5)].map((_, i) => (
+      {[...Array(3)].map((_, i) => (
         <motion.div
           key={`morph-bg-${i}`}
           className='fixed pointer-events-none opacity-10'
@@ -232,7 +232,7 @@ export default function Home() {
       </div>
 
       {/* Professional Floating Elements */}
-      {[...Array(6)].map((_, i) => (
+      {[...Array(4)].map((_, i) => (
         <motion.div
           key={`orb-${i}`}
           className='fixed w-2 h-2 bg-yellow-400/40 rounded-full pointer-events-none'
@@ -270,7 +270,7 @@ export default function Home() {
 
             {/* Professional Loading Indicators */}
             {windowDimensions.width > 0 &&
-              [...Array(8)].map((_, i) => (
+              [...Array(windowDimensions.width < 768 ? 4 : 8)].map((_, i) => (
                 <motion.div
                   key={i}
                   className='absolute w-1 h-1 bg-yellow-400/60 rounded-full'
@@ -321,7 +321,7 @@ export default function Home() {
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 1, duration: 0.8 }}
-                className='text-6xl md:text-8xl font-black mb-8 tracking-tighter'
+                className='text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-6 xs:mb-8 tracking-tighter'
               >
                 <motion.span
                   initial={{ backgroundPosition: '0% 50%' }}
@@ -343,7 +343,7 @@ export default function Home() {
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 1.5, duration: 0.8 }}
-                className='text-2xl md:text-3xl text-gray-300 font-bold tracking-wide mb-12'
+                className='text-lg xs:text-xl sm:text-2xl md:text-3xl text-gray-300 font-bold tracking-wide mb-8 xs:mb-10 sm:mb-12'
               >
                 <span className='text-yellow-400'>Unleash the Fear.</span>{' '}
                 <span className='text-white'>Ride Dread.</span>
@@ -354,7 +354,7 @@ export default function Home() {
                 initial={{ width: 0 }}
                 animate={{ width: '100%' }}
                 transition={{ delay: 2, duration: 0.5 }}
-                className='w-80 h-2 bg-gray-800 rounded-full mx-auto mb-4 overflow-hidden'
+                className='w-64 xs:w-72 sm:w-80 h-2 bg-gray-800 rounded-full mx-auto mb-4 overflow-hidden'
               >
                 <motion.div
                   className='h-full bg-gradient-to-r from-yellow-500 to-yellow-400 rounded-full'
@@ -369,7 +369,7 @@ export default function Home() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 2.2 }}
-                className='text-gray-400 text-lg'
+                className='text-gray-400 text-base xs:text-lg'
               >
                 Forging your legend...
               </motion.p>

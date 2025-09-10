@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DreadBike Favicon Generator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background: #1c1c1c;
+        color: #fff;
+      }
+      .favicon-preview {
+        display: inline-block;
+        margin: 10px;
+        text-align: center;
+      }
+      canvas {
+        border: 1px solid #ffff00;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>DreadBike Favicon Generator</h1>
+    <p>
+      Right-click on each canvas and "Save image as..." to download the favicon
+      files.
+    </p>
+
+    <div class="favicon-preview">
+      <canvas id="favicon16" width="16" height="16"></canvas>
+      <br />favicon-16x16.png
+    </div>
+
+    <div class="favicon-preview">
+      <canvas id="favicon32" width="32" height="32"></canvas>
+      <br />favicon-32x32.png
+    </div>
+
+    <div class="favicon-preview">
+      <canvas id="favicon96" width="96" height="96"></canvas>
+      <br />favicon-96x96.png
+    </div>
+
+    <div class="favicon-preview">
+      <canvas id="apple180" width="180" height="180"></canvas>
+      <br />apple-touch-icon-180x180.png
+    </div>
+
+    <script>
+      function drawFavicon(canvasId, size) {
+        const canvas = document.getElementById(canvasId);
+        const ctx = canvas.getContext('2d');
+
+        // Background
+        ctx.fillStyle = '#1c1c1c';
+        ctx.fillRect(0, 0, size, size);
+
+        // Yellow circle outline
+        ctx.strokeStyle = '#ffff00';
+        ctx.lineWidth = Math.max(1, size / 16);
+        ctx.beginPath();
+        ctx.arc(size / 2, size / 2, size / 2 - ctx.lineWidth, 0, 2 * Math.PI);
+        ctx.stroke();
+
+        // Yellow diamond/star shape
+        ctx.fillStyle = '#ffff00';
+        ctx.beginPath();
+        const center = size / 2;
+        const radius = size / 4;
+        ctx.moveTo(center - radius, center);
+        ctx.lineTo(center, center - radius);
+        ctx.lineTo(center + radius, center);
+        ctx.lineTo(center, center + radius);
+        ctx.closePath();
+        ctx.fill();
+
+        // Inner dark circle
+        ctx.fillStyle = '#1c1c1c';
+        ctx.beginPath();
+        ctx.arc(center, center, size / 8, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+
+      // Generate all favicon sizes
+      drawFavicon('favicon16', 16);
+      drawFavicon('favicon32', 32);
+      drawFavicon('favicon96', 96);
+      drawFavicon('apple180', 180);
+    </script>
+  </body>
+</html>

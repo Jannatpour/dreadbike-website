@@ -24,7 +24,7 @@ export default function Hero({ onViewServices }: HeroProps) {
   }, []);
 
   return (
-    <section className='relative min-h-screen flex items-center justify-center overflow-hidden'>
+    <section className='relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8'>
       {/* Cinematic Background Layers */}
       <div className='absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' />
 
@@ -46,11 +46,11 @@ export default function Hero({ onViewServices }: HeroProps) {
         <motion.div
           className='absolute inset-0'
           style={{
-          backgroundImage: `
+            backgroundImage: `
               linear-gradient(rgba(255, 165, 0, 0.1) 1px, transparent 1px),
               linear-gradient(90deg, rgba(0, 191, 255, 0.1) 1px, transparent 1px)
           `,
-          backgroundSize: '50px 50px',
+            backgroundSize: '50px 50px',
           }}
           animate={{
             backgroundPosition: ['0px 0px', '50px 50px'],
@@ -76,51 +76,51 @@ export default function Hero({ onViewServices }: HeroProps) {
       </motion.div>
 
       {/* Subtle Particle System */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className='absolute inset-0 overflow-hidden'>
         {[...Array(15)].map((_, i) => (
           <motion.div
             key={`particle-${i}`}
-            className="absolute w-1 h-1 bg-orange-500/30 rounded-full"
-            initial={{ 
+            className='absolute w-1 h-1 bg-orange-500/30 rounded-full'
+            initial={{
               x: `${20 + i * 5}%`,
               y: `${20 + i * 3}%`,
               opacity: 0,
-              scale: 0
+              scale: 0,
             }}
             animate={{
               y: [`${20 + i * 3}%`, `${80 - i * 2}%`, `${20 + i * 3}%`],
               opacity: [0, 0.6, 0],
-              scale: [0, 1, 0]
+              scale: [0, 1, 0],
             }}
             transition={{
               duration: 6 + i * 0.5,
               repeat: Infinity,
               delay: i * 0.3,
-              ease: "easeInOut"
+              ease: 'easeInOut',
             }}
           />
         ))}
       </div>
 
       {/* Subtle Energy Lines */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className='absolute inset-0 overflow-hidden'>
         {[...Array(3)].map((_, i) => (
           <motion.div
             key={`wave-${i}`}
-            className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-orange-500/20 to-transparent"
+            className='absolute w-full h-0.5 bg-gradient-to-r from-transparent via-orange-500/20 to-transparent'
             style={{
               top: `${30 + i * 20}%`,
-              left: '-100%'
+              left: '-100%',
             }}
             animate={{
               left: ['100%', '-100%'],
-              opacity: [0, 0.8, 0]
+              opacity: [0, 0.8, 0],
             }}
             transition={{
               duration: 8 + i * 2,
               repeat: Infinity,
               delay: i * 2,
-              ease: "easeInOut"
+              ease: 'easeInOut',
             }}
           />
         ))}
@@ -194,8 +194,16 @@ export default function Hero({ onViewServices }: HeroProps) {
           animate={{
             left: [`${20 + i * 30}%`, `${80 - i * 20}%`, `${20 + i * 30}%`],
             top: [`${20 + i * 25}%`, `${80 - i * 15}%`, `${20 + i * 25}%`],
-            width: [`${100 + i * 20}px`, `${120 + i * 15}px`, `${100 + i * 20}px`],
-            height: [`${100 + i * 15}px`, `${120 + i * 20}px`, `${100 + i * 15}px`],
+            width: [
+              `${100 + i * 20}px`,
+              `${120 + i * 15}px`,
+              `${100 + i * 20}px`,
+            ],
+            height: [
+              `${100 + i * 15}px`,
+              `${120 + i * 20}px`,
+              `${100 + i * 15}px`,
+            ],
             scale: [0.8, 1.2, 0.8],
             borderRadius: [
               '50% 50% 50% 50%',
@@ -274,9 +282,9 @@ export default function Hero({ onViewServices }: HeroProps) {
       </motion.div>
 
       {/* Main Content with Cinematic Effects */}
-      <motion.div 
+      <motion.div
         style={{ opacity }}
-        className='relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto'
+        className='relative z-10 text-center w-full max-w-7xl mx-auto'
       >
         {/* Dramatic Logo Entrance with Multiple Effects */}
         <motion.div
@@ -344,7 +352,7 @@ export default function Hero({ onViewServices }: HeroProps) {
             }}
           />
         </motion.div>
-        
+
         {/* Dramatic Main Title with Cinematic Effects */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -366,7 +374,7 @@ export default function Hero({ onViewServices }: HeroProps) {
             }}
           />
 
-          <h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black leading-tight relative z-10'>
+          <h1 className='text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black leading-tight relative z-10'>
             {/* UNLEASH with Dramatic Entrance */}
             <motion.span
               className='block text-transparent bg-clip-text bg-gradient-to-r from-gray-100 via-orange-500 to-gray-100'
@@ -399,7 +407,7 @@ export default function Hero({ onViewServices }: HeroProps) {
 
             {/* THE FEAR with Sliding Effect */}
             <motion.span
-              className='block text-blue-500 text-4xl md:text-6xl lg:text-7xl font-black mt-2 relative'
+              className='block text-blue-500 text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-black mt-2 relative'
               initial={{ x: -200, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{
@@ -427,14 +435,14 @@ export default function Hero({ onViewServices }: HeroProps) {
                   repeat: Infinity,
                   ease: 'easeInOut',
                 }}
-            >
-              THE FEAR
+              >
+                THE FEAR
               </motion.span>
             </motion.span>
 
             {/* RIDE DREAD with Dramatic Finale */}
             <motion.span
-              className='block text-3xl md:text-5xl lg:text-6xl font-black mt-4'
+              className='block text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black mt-4'
               initial={{ x: 200, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{
@@ -483,7 +491,7 @@ export default function Hero({ onViewServices }: HeroProps) {
             transition={{ duration: 1.5, delay: 2.5 }}
           />
         </motion.div>
-        
+
         {/* Creative Subtitle with Typewriter Effect */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -491,26 +499,31 @@ export default function Hero({ onViewServices }: HeroProps) {
           transition={{ duration: 0.8, delay: 1.4 }}
           className='mb-16 text-center'
         >
-           <div className='text-base sm:text-lg md:text-xl text-gray-300 max-w-5xl mx-auto leading-relaxed px-4 sm:px-6'>
-             <span className='text-yellow-400 font-semibold'>Professional motorcycle tuning</span> and{' '}
-             <span className='text-yellow-300 font-semibold'>custom modifications</span> that transform your bike into a{' '}
-             <span className='relative inline-block'>
-               <span className='text-yellow-400 font-semibold'>
-                 high-performance machine
-               </span>
+          <div className='text-sm xs:text-base sm:text-lg md:text-xl text-gray-300 max-w-5xl mx-auto leading-relaxed px-4 sm:px-6'>
+            <span className='text-yellow-400 font-semibold'>
+              Professional motorcycle tuning
+            </span>{' '}
+            and{' '}
+            <span className='text-yellow-300 font-semibold'>
+              custom modifications
+            </span>{' '}
+            that transform your bike into a{' '}
+            <span className='relative inline-block'>
+              <span className='text-yellow-400 font-semibold'>
+                high-performance machine
+              </span>
               <motion.div
-                 className='absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-yellow-400 to-yellow-300'
+                className='absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-yellow-400 to-yellow-300'
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 2 }}
               />
-             </span>{' '}
-             with precision engineering and measurable results.
+            </span>{' '}
+            with precision engineering and measurable results.
           </div>
         </motion.div>
-        
       </motion.div>
-      
+
       {/* Dramatic Scroll Indicator with Enhanced Effects */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -556,7 +569,7 @@ export default function Hero({ onViewServices }: HeroProps) {
             {/* Outer Glow Ring */}
             <motion.div
               className='absolute -inset-2 border-2 border-yellow-400/30 rounded-full'
-              animate={{ 
+              animate={{
                 scale: [1, 1.2, 1],
                 opacity: [0.3, 0.6, 0.3],
               }}
@@ -626,7 +639,9 @@ export default function Hero({ onViewServices }: HeroProps) {
               }}
               className='text-yellow-400 text-xs'
             >
-              <div className="w-4 h-4 bg-yellow-400 rounded-full flex items-center justify-center text-black font-bold text-xs">↓</div>
+              <div className='w-4 h-4 bg-yellow-400 rounded-full flex items-center justify-center text-black font-bold text-xs'>
+                ↓
+              </div>
             </motion.span>
             <motion.span
               animate={{ y: [0, 3, 0] }}
@@ -638,7 +653,9 @@ export default function Hero({ onViewServices }: HeroProps) {
               }}
               className='text-yellow-400 text-xs'
             >
-              <div className="w-4 h-4 bg-yellow-400 rounded-full flex items-center justify-center text-black font-bold text-xs">↓</div>
+              <div className='w-4 h-4 bg-yellow-400 rounded-full flex items-center justify-center text-black font-bold text-xs'>
+                ↓
+              </div>
             </motion.span>
           </motion.div>
         </motion.div>
@@ -646,4 +663,3 @@ export default function Hero({ onViewServices }: HeroProps) {
     </section>
   );
 }
-

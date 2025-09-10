@@ -11,7 +11,7 @@ import {
 
 export default function About() {
   return (
-    <section className='py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden'>
+    <section className='py-12 xs:py-16 sm:py-20 md:py-24 lg:py-32 px-4 xs:px-6 sm:px-8 lg:px-12 bg-black relative overflow-hidden'>
       {/* Cinematic Background Effects */}
       <div className='absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-gray-800' />
       <div className="absolute inset-0 bg-[url('/images/texture-overlay.png')] opacity-15 mix-blend-overlay" />
@@ -43,8 +43,16 @@ export default function About() {
           className='absolute w-2 h-2 bg-orange-500/30 rounded-full'
           initial={{ opacity: 0 }}
           animate={{
-            left: [`${10 + (i % 6) * 15}%`, `${90 - (i % 5) * 12}%`, `${10 + (i % 6) * 15}%`],
-            top: [`${10 + (i % 7) * 12}%`, `${90 - (i % 4) * 10}%`, `${10 + (i % 7) * 12}%`],
+            left: [
+              `${10 + (i % 6) * 15}%`,
+              `${90 - (i % 5) * 12}%`,
+              `${10 + (i % 6) * 15}%`,
+            ],
+            top: [
+              `${10 + (i % 7) * 12}%`,
+              `${90 - (i % 4) * 10}%`,
+              `${10 + (i % 7) * 12}%`,
+            ],
             y: [0, -50, 0],
             x: [0, (i % 2 === 0 ? 1 : -1) * 15, 0],
             opacity: [0, 1, 0],
@@ -65,11 +73,11 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, type: 'spring', stiffness: 100 }}
           viewport={{ once: true }}
-          className='text-center mb-20'
+          className='text-center mb-12 xs:mb-16 sm:mb-20'
         >
           {/* Enhanced Title with Dramatic Effects */}
           <motion.h2
-            className='text-5xl md:text-6xl font-black mb-8 relative'
+            className='text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-black mb-6 xs:mb-8 relative'
             initial={{ scale: 0.8, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
@@ -130,7 +138,13 @@ export default function About() {
               />
             </motion.span>{' '}
             and{' '}
-            <span className='text-blue-500 font-semibold'>custom modifications</span>. Our certified technicians use state-of-the-art diagnostic equipment and precision tools to optimize your motorcycle&apos;s performance, delivering measurable improvements in power, efficiency, and reliability.
+            <span className='text-blue-500 font-semibold'>
+              custom modifications
+            </span>
+            . Our certified technicians use state-of-the-art diagnostic
+            equipment and precision tools to optimize your motorcycle&apos;s
+            performance, delivering measurable improvements in power,
+            efficiency, and reliability.
           </motion.p>
         </motion.div>
 
@@ -193,7 +207,9 @@ export default function About() {
                       ease: 'linear',
                     }}
                   >
-                    <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-sm">1</div>
+                    <div className='w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-sm'>
+                      1
+                    </div>
                   </motion.span>
                   <CardTitle className='text-3xl text-red-500 font-black'>
                     OUR MISSION
@@ -281,7 +297,9 @@ export default function About() {
                       ease: 'easeInOut',
                     }}
                   >
-                    <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-sm">2</div>
+                    <div className='w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-sm'>
+                      2
+                    </div>
                   </motion.span>
                   <CardTitle className='text-3xl text-red-500 font-black'>
                     WHAT WE DO
@@ -374,7 +392,9 @@ export default function About() {
                       ease: 'easeInOut',
                     }}
                   >
-                    <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-sm">3</div>
+                    <div className='w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-sm'>
+                      3
+                    </div>
                   </motion.span>
                   <motion.h3
                     className='text-4xl font-black text-red-500'
@@ -441,13 +461,13 @@ export default function About() {
                         delay: index * 0.5,
                       }}
                     >
-                      <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                      <div className='w-12 h-12 bg-gradient-to-r from-orange-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg'>
                         {number}
                       </div>
                     </motion.span>
                   ))}
                 </motion.div>
-            </CardContent>
+              </CardContent>
 
               {/* Shimmer Effect */}
               <motion.div
@@ -456,7 +476,7 @@ export default function About() {
                 whileHover={{ x: '100%' }}
                 transition={{ duration: 1, ease: 'easeInOut' }}
               />
-          </Card>
+            </Card>
           </motion.div>
         </motion.div>
       </div>

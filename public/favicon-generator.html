@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DreadBike Favicon Generator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background: #1c1c1c;
+        color: #fff;
+      }
+      .favicon-preview {
+        display: inline-block;
+        margin: 10px;
+        text-align: center;
+      }
+      canvas {
+        border: 1px solid #ffff00;
+        margin: 5px;
+        background: #1c1c1c;
+      }
+      .download-btn {
+        background: #ffff00;
+        color: #1c1c1c;
+        border: none;
+        padding: 5px 10px;
+        margin: 5px;
+        cursor: pointer;
+        border-radius: 3px;
+        font-weight: bold;
+      }
+      .download-btn:hover {
+        background: #e6e600;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>DreadBike Favicon Generator</h1>
+    <p>Click the download buttons to save each favicon file.</p>
+
+    <div class="favicon-preview">
+      <canvas id="favicon16" width="16" height="16"></canvas>
+      <br />
+      <button
+        class="download-btn"
+        onclick="downloadCanvas('favicon16', 'favicon-16x16.png')"
+      >
+        Download 16x16
+      </button>
+    </div>
+
+    <div class="favicon-preview">
+      <canvas id="favicon32" width="32" height="32"></canvas>
+      <br />
+      <button
+        class="download-btn"
+        onclick="downloadCanvas('favicon32', 'favicon-32x32.png')"
+      >
+        Download 32x32
+      </button>
+    </div>
+
+    <div class="favicon-preview">
+      <canvas id="favicon96" width="96" height="96"></canvas>
+      <br />
+      <button
+        class="download-btn"
+        onclick="downloadCanvas('favicon96', 'favicon-96x96.png')"
+      >
+        Download 96x96
+      </button>
+    </div>
+
+    <div class="favicon-preview">
+      <canvas id="apple180" width="180" height="180"></canvas>
+      <br />
+      <button
+        class="download-btn"
+        onclick="downloadCanvas('apple180', 'apple-touch-icon-180x180.png')"
+      >
+        Download Apple 180x180
+      </button>
+    </div>
+
+    <div class="favicon-preview">
+      <canvas id="apple57" width="57" height="57"></canvas>
+      <br />
+      <button
+        class="download-btn"
+        onclick="downloadCanvas('apple57', 'apple-touch-icon-57x57.png')"
+      >
+        Download Apple 57x57
+      </button>
+    </div>
+
+    <div class="favicon-preview">
+      <canvas id="apple60" width="60" height="60"></canvas>
+      <br />
+      <button
+        class="download-btn"
+        onclick="downloadCanvas('apple60', 'apple-touch-icon-60x60.png')"
+      >
+        Download Apple 60x60
+      </button>
+    </div>
+
+    <div class="favicon-preview">
+      <canvas id="apple72" width="72" height="72"></canvas>
+      <br />
+      <button
+        class="download-btn"
+        onclick="downloadCanvas('apple72', 'apple-touch-icon-72x72.png')"
+      >
+        Download Apple 72x72
+      </button>
+    </div>
+
+    <div class="favicon-preview">
+      <canvas id="apple76" width="76" height="76"></canvas>
+      <br />
+      <button
+        class="download-btn"
+        onclick="downloadCanvas('apple76', 'apple-touch-icon-76x76.png')"
+      >
+        Download Apple 76x76
+      </button>
+    </div>
+
+    <div class="favicon-preview">
+      <canvas id="apple114" width="114" height="114"></canvas>
+      <br />
+      <button
+        class="download-btn"
+        onclick="downloadCanvas('apple114', 'apple-touch-icon-114x114.png')"
+      >
+        Download Apple 114x114
+      </button>
+    </div>
+
+    <div class="favicon-preview">
+      <canvas id="apple120" width="120" height="120"></canvas>
+      <br />
+      <button
+        class="download-btn"
+        onclick="downloadCanvas('apple120', 'apple-touch-icon-120x120.png')"
+      >
+        Download Apple 120x120
+      </button>
+    </div>
+
+    <div class="favicon-preview">
+      <canvas id="apple144" width="144" height="144"></canvas>
+      <br />
+      <button
+        class="download-btn"
+        onclick="downloadCanvas('apple144', 'apple-touch-icon-144x144.png')"
+      >
+        Download Apple 144x144
+      </button>
+    </div>
+
+    <div class="favicon-preview">
+      <canvas id="apple152" width="152" height="152"></canvas>
+      <br />
+      <button
+        class="download-btn"
+        onclick="downloadCanvas('apple152', 'apple-touch-icon-152x152.png')"
+      >
+        Download Apple 152x152
+      </button>
+    </div>
+
+    <script>
+      function drawFavicon(canvasId, size) {
+        const canvas = document.getElementById(canvasId);
+        const ctx = canvas.getContext('2d');
+
+        // Background
+        ctx.fillStyle = '#1c1c1c';
+        ctx.fillRect(0, 0, size, size);
+
+        // Yellow circle outline
+        ctx.strokeStyle = '#ffff00';
+        ctx.lineWidth = Math.max(1, size / 16);
+        ctx.beginPath();
+        ctx.arc(size / 2, size / 2, size / 2 - ctx.lineWidth, 0, 2 * Math.PI);
+        ctx.stroke();
+
+        // Yellow diamond/star shape
+        ctx.fillStyle = '#ffff00';
+        ctx.beginPath();
+        const center = size / 2;
+        const radius = size / 4;
+        ctx.moveTo(center - radius, center);
+        ctx.lineTo(center, center - radius);
+        ctx.lineTo(center + radius, center);
+        ctx.lineTo(center, center + radius);
+        ctx.closePath();
+        ctx.fill();
+
+        // Inner dark circle
+        ctx.fillStyle = '#1c1c1c';
+        ctx.beginPath();
+        ctx.arc(center, center, size / 8, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+
+      function downloadCanvas(canvasId, filename) {
+        const canvas = document.getElementById(canvasId);
+        const link = document.createElement('a');
+        link.download = filename;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      }
+
+      // Generate all favicon sizes
+      drawFavicon('favicon16', 16);
+      drawFavicon('favicon32', 32);
+      drawFavicon('favicon96', 96);
+      drawFavicon('apple180', 180);
+      drawFavicon('apple57', 57);
+      drawFavicon('apple60', 60);
+      drawFavicon('apple72', 72);
+      drawFavicon('apple76', 76);
+      drawFavicon('apple114', 114);
+      drawFavicon('apple120', 120);
+      drawFavicon('apple144', 144);
+      drawFavicon('apple152', 152);
+    </script>
+  </body>
+</html>

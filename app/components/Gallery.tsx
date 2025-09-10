@@ -82,7 +82,7 @@ export default function Gallery() {
   return (
     <section
       ref={ref}
-      className='py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden'
+      className='py-12 xs:py-16 sm:py-20 md:py-24 lg:py-32 px-4 xs:px-6 sm:px-8 lg:px-12 relative overflow-hidden'
     >
       {/* Enhanced Dynamic Background with Multiple Layers */}
       <div className='absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-gray-800' />
@@ -165,7 +165,7 @@ export default function Gallery() {
             transition={{ duration: 1.5, type: 'spring', stiffness: 100 }}
           >
             <motion.h2
-              className='text-6xl md:text-8xl lg:text-9xl font-black mb-8 relative'
+              className='text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black mb-6 xs:mb-8 relative'
               animate={{
                 textShadow: [
                   '0 0 0px rgba(255, 255, 0, 0)',
@@ -249,7 +249,7 @@ export default function Gallery() {
         </motion.div>
 
         {/* Enhanced Gallery Grid with Fixed Parallax */}
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8'>
+        <div className='grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-6 lg:gap-8'>
           {galleryImages.map((image, index) => {
             return (
               <motion.div
@@ -272,15 +272,15 @@ export default function Gallery() {
                 }}
                 onHoverStart={() => setHoveredIndex(index)}
                 onHoverEnd={() => setHoveredIndex(null)}
-                className={`group relative overflow-hidden rounded-2xl perspective-1000 cursor-pointer ${
+                className={`group relative overflow-hidden rounded-xl xs:rounded-2xl perspective-1000 cursor-pointer ${
                   index === 0 || index === 4
-                    ? 'sm:col-span-2 lg:col-span-1'
+                    ? 'xs:col-span-2 lg:col-span-1'
                     : ''
                 } ${index === 2 ? 'lg:row-span-2' : ''} ${
                   hoveredIndex === index ? 'z-50' : 'z-10'
                 }`}
               >
-                <div className='relative aspect-square sm:aspect-video md:aspect-auto h-64 sm:h-80 overflow-hidden'>
+                <div className='relative aspect-square xs:aspect-video md:aspect-auto h-48 xs:h-56 sm:h-64 md:h-80 overflow-hidden'>
                   {/* Enhanced Image with Multiple Effects */}
                   <motion.div
                     className='relative w-full h-full'

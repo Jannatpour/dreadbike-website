@@ -1,0 +1,32 @@
+{
+  "name": "DreadBike - Unleash the Fear. Ride Dread.",
+  "short_name": "DreadBike",
+  "description": "Professional motorcycle tuning, custom builds, and performance upgrades.",
+  "icons": [
+    {
+      "src": "/favicon-16x16.svg",
+      "sizes": "16x16",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicon-32x32.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicon-96x96.svg",
+      "sizes": "96x96",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/apple-touch-icon-180x180.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#1c1c1c",
+  "background_color": "#1c1c1c",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/"
+}

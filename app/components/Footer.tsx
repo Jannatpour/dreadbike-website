@@ -32,7 +32,7 @@ const quickLinks = [
 
 export default function Footer() {
   return (
-    <footer className='bg-black border-t border-yellow-400/30 relative overflow-hidden py-12 sm:py-16'>
+    <footer className='bg-black border-t border-yellow-400/30 relative overflow-hidden py-8 xs:py-10 sm:py-12 md:py-16'>
       {/* Cinematic Background Effects */}
       <div className='absolute inset-0 bg-gradient-to-t from-gray-800 via-gray-900 to-gray-800' />
       <div className="absolute inset-0 bg-[url('/images/texture-overlay.png')] opacity-5 mix-blend-overlay" />
