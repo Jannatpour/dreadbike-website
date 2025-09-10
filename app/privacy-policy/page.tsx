@@ -137,7 +137,7 @@ export default function PrivacyPolicy() {
         </div>
 
         <div className='bg-gray-800/50 rounded-lg p-6 border border-yellow-400/20'>
-          <h2 className='text-2xl font-bold text-yellow-400 mb-4'>9. CHILDREN'S PRIVACY</h2>
+          <h2 className='text-2xl font-bold text-yellow-400 mb-4'>9. CHILDREN&apos;S PRIVACY</h2>
           <p className='text-gray-300 leading-relaxed'>
             Our services are not directed to children under 16. We do not knowingly collect personal 
             information from children under 16. If we become aware that we have collected such information, 
@@ -157,8 +157,8 @@ export default function PrivacyPolicy() {
         <div className='bg-gray-800/50 rounded-lg p-6 border border-yellow-400/20'>
           <h2 className='text-2xl font-bold text-yellow-400 mb-4'>11. CHANGES TO THIS POLICY</h2>
           <p className='text-gray-300 leading-relaxed'>
-            We may update this Privacy Policy from time to time. We will notify you of any material 
-            changes by posting the new policy on our website and updating the "Last Updated" date. 
+            We may update this Privacy Policy from time to time.             We will notify you of any material 
+            changes by posting the new policy on our website and updating the &quot;Last Updated&quot; date. 
             Your continued use of our services after such changes constitutes acceptance of the updated policy.
           </p>
         </div>
@@ -180,7 +180,7 @@ export default function PrivacyPolicy() {
           <p className='text-gray-300 leading-relaxed'>
             Just as we treat every motorcycle modification with precision and respect, we handle your 
             personal information with the same level of care and attention to detail. Your privacy is 
-            not just a policy—it's our promise to you.
+            not just a policy—it&apos;s our promise to you.
           </p>
         </div>
       </div>

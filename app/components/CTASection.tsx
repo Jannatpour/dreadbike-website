@@ -231,7 +231,7 @@ export default function CTASection({ onBookTuning }: CTASectionProps) {
             stiffness: 100,
           }}
           viewport={{ once: true }}
-          className='flex flex-col sm:flex-row gap-8 justify-center items-center'
+          className='flex flex-col sm:flex-row gap-6 xs:gap-8 justify-center items-center px-4'
         >
           <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
             <DialogTrigger asChild>
@@ -272,7 +272,7 @@ export default function CTASection({ onBookTuning }: CTASectionProps) {
 
                 <Button
                   size='lg'
-                  className='relative bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-500 hover:to-orange-600 text-white px-12 sm:px-16 py-6 sm:py-8 text-lg sm:text-xl lg:text-2xl font-bold rounded-xl border-2 border-orange-400/50 shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-orange-500/25'
+                  className='btn-touch relative bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-500 hover:to-orange-600 text-white px-8 xs:px-12 sm:px-16 py-4 xs:py-6 sm:py-8 text-base xs:text-lg sm:text-xl lg:text-2xl font-bold rounded-xl border-2 border-orange-400/50 shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-orange-500/25 w-full xs:w-auto min-w-[200px] xs:min-w-[250px]'
                 >
                   {/* Shimmer Effect */}
                   <motion.div
@@ -334,8 +334,8 @@ export default function CTASection({ onBookTuning }: CTASectionProps) {
                   you&apos;re seeking.
                 </DialogDescription>
               </DialogHeader>
-              <form onSubmit={handleSubmit} className='space-y-4'>
-                <div className='grid grid-cols-2 gap-4'>
+              <form onSubmit={handleSubmit} className='space-y-4 mobile-form'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
                   <Input
                     name='name'
                     placeholder='Your Name'
@@ -354,7 +354,7 @@ export default function CTASection({ onBookTuning }: CTASectionProps) {
                     className='bg-muted border-border'
                   />
                 </div>
-                <div className='grid grid-cols-2 gap-4'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
                   <Input
                     name='phone'
                     type='tel'

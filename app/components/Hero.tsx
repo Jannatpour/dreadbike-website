@@ -1,7 +1,6 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import Logo from './Logo';
 import { useEffect, useState } from 'react';
 
 interface HeroProps {
@@ -24,7 +23,7 @@ export default function Hero({ onViewServices }: HeroProps) {
   }, []);
 
   return (
-    <section className='relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8'>
+    <section className='relative min-h-screen flex items-center justify-center overflow-hidden px-4 xs:px-6 sm:px-8 lg:px-12 xl:px-16'>
       {/* Cinematic Background Layers */}
       <div className='absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' />
 
@@ -286,9 +285,9 @@ export default function Hero({ onViewServices }: HeroProps) {
         style={{ opacity }}
         className='relative z-10 text-center w-full max-w-7xl mx-auto'
       >
-        {/* Dramatic Logo Entrance with Multiple Effects */}
+        {/* Dynamic Text-Based Hero Title */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.3, y: 100 }}
+          initial={{ opacity: 0, scale: 0.8, y: 100 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{
             duration: 1.5,
@@ -325,20 +324,73 @@ export default function Hero({ onViewServices }: HeroProps) {
             }}
           />
 
-          {/* Logo with Hover Effects */}
+          {/* Animated Text Title */}
           <motion.div
+            className='relative z-10'
             whileHover={{
-              scale: 1.05,
-              filter:
-                'brightness(1.2) drop-shadow(0 0 30px rgba(255, 165, 0, 0.8))',
+              scale: 1.02,
+              filter: 'brightness(1.1) drop-shadow(0 0 30px rgba(255, 165, 0, 0.8))',
             }}
             transition={{ duration: 0.3 }}
           >
-            <Logo
-              variant='gritty'
-              size='xl'
-              className='mx-auto relative z-10'
-            />
+            <motion.h1
+              className='text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[12rem] font-black leading-none text-center mb-4'
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 1 }}
+            >
+              <motion.span
+                className='block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-yellow-500 to-orange-600'
+                animate={{
+                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+                style={{
+                  backgroundSize: '200% 200%',
+                }}
+              >
+                DREAD
+              </motion.span>
+              <motion.span
+                className='block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mt-2 text-blue-400'
+                initial={{ opacity: 0, x: -100 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.8, duration: 1 }}
+              >
+                BIKE
+              </motion.span>
+            </motion.h1>
+
+            {/* Animated Subtitle */}
+            <motion.div
+              className='mt-6'
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2, duration: 1 }}
+            >
+              <motion.p
+                className='text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300 font-bold tracking-wider'
+                animate={{
+                  textShadow: [
+                    '0 0 10px rgba(255, 165, 0, 0.5)',
+                    '0 0 20px rgba(255, 165, 0, 0.8)',
+                    '0 0 10px rgba(255, 165, 0, 0.5)',
+                  ],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+              >
+                <span className='text-yellow-400'>UNLEASH</span>{' '}
+                <span className='text-white'>THE FEAR</span>
+              </motion.p>
+            </motion.div>
           </motion.div>
 
           {/* Rotating Ring Effect */}
@@ -353,144 +405,6 @@ export default function Hero({ onViewServices }: HeroProps) {
           />
         </motion.div>
 
-        {/* Dramatic Main Title with Cinematic Effects */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6 }}
-          className='mb-12 text-center relative'
-        >
-          {/* Background Glow for Title */}
-          <motion.div
-            className='absolute inset-0 bg-orange-500/10 blur-3xl scale-150'
-            animate={{
-              scale: [1.5, 1.8, 1.5],
-              opacity: [0.1, 0.3, 0.1],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-          />
-
-          <h1 className='text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black leading-tight relative z-10'>
-            {/* UNLEASH with Dramatic Entrance */}
-            <motion.span
-              className='block text-transparent bg-clip-text bg-gradient-to-r from-gray-100 via-orange-500 to-gray-100'
-              style={{
-                backgroundImage:
-                  'linear-gradient(45deg, #f5f5f5, #ff6600, #f5f5f5, #00bfff, #f5f5f5)',
-                backgroundSize: '500% 500%',
-              }}
-              animate={{
-                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                scale: 1,
-              }}
-              transition={{
-                backgroundPosition: {
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                },
-                scale: {
-                  duration: 1,
-                  delay: 0.8,
-                  type: 'spring',
-                  stiffness: 100,
-                },
-              }}
-              initial={{ scale: 0, y: 20 }}
-            >
-              UNLEASH
-            </motion.span>
-
-            {/* THE FEAR with Sliding Effect */}
-            <motion.span
-              className='block text-blue-500 text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-black mt-2 relative'
-              initial={{ x: -200, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{
-                duration: 1,
-                delay: 1.2,
-                type: 'spring',
-                stiffness: 80,
-              }}
-              whileHover={{
-                scale: 1.05,
-                textShadow: '0 0 30px rgba(0, 191, 255, 0.8)',
-              }}
-            >
-              <motion.span
-                className='relative inline-block'
-                animate={{
-                  textShadow: [
-                    '0 0 0px rgba(0, 191, 255, 0)',
-                    '0 0 20px rgba(0, 191, 255, 0.8)',
-                    '0 0 0px rgba(0, 191, 255, 0)',
-                  ],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              >
-                THE FEAR
-              </motion.span>
-            </motion.span>
-
-            {/* RIDE DREAD with Dramatic Finale */}
-            <motion.span
-              className='block text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black mt-4'
-              initial={{ x: 200, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{
-                duration: 1,
-                delay: 1.6,
-                type: 'spring',
-                stiffness: 80,
-              }}
-            >
-              <motion.span
-                className='inline-block mr-4'
-                whileHover={{ scale: 1.1 }}
-              >
-                RIDE
-              </motion.span>
-              <motion.span
-                className='text-orange-500 inline-block'
-                whileHover={{
-                  scale: 1.2,
-                  textShadow: '0 0 40px rgba(255, 165, 0, 1)',
-                }}
-                animate={{
-                  textShadow: [
-                    '0 0 0px rgba(255, 165, 0, 0)',
-                    '0 0 30px rgba(255, 165, 0, 0.8)',
-                    '0 0 0px rgba(255, 165, 0, 0)',
-                  ],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                  delay: 2,
-                }}
-              >
-                DREAD
-              </motion.span>
-            </motion.span>
-          </h1>
-
-          {/* Dramatic Underline Effect */}
-          <motion.div
-            className='absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-transparent via-orange-500 to-transparent'
-            initial={{ width: 0 }}
-            animate={{ width: '80%' }}
-            transition={{ duration: 1.5, delay: 2.5 }}
-          />
-        </motion.div>
 
         {/* Creative Subtitle with Typewriter Effect */}
         <motion.div
@@ -499,7 +413,7 @@ export default function Hero({ onViewServices }: HeroProps) {
           transition={{ duration: 0.8, delay: 1.4 }}
           className='mb-16 text-center'
         >
-          <div className='text-sm xs:text-base sm:text-lg md:text-xl text-gray-300 max-w-5xl mx-auto leading-relaxed px-4 sm:px-6'>
+          <div className='text-scale-mobile sm:text-lg md:text-xl text-gray-300 max-w-5xl mx-auto leading-relaxed px-4 xs:px-6 sm:px-8'>
             <span className='text-yellow-400 font-semibold'>
               Professional motorcycle tuning
             </span>{' '}

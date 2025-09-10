@@ -8,6 +8,7 @@ import {
   useTransform,
   AnimatePresence,
 } from 'framer-motion';
+import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
 import Features from './components/Features';
@@ -83,10 +84,16 @@ export default function Home() {
   };
 
   return (
-    <div className='min-h-screen bg-background text-foreground relative prevent-horizontal-scroll'>
+    <div className='min-h-screen bg-background text-foreground relative prevent-horizontal-scroll overflow-x-hidden'>
       {/* Global Background Effects */}
       <div className='fixed inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pointer-events-none' />
       <div className="fixed inset-0 bg-[url('/images/texture-overlay.png')] opacity-5 mix-blend-overlay pointer-events-none" />
+
+      {/* Responsive Header */}
+      <Header />
+
+      {/* Main Content with Header Spacing */}
+      <div className='pt-16 sm:pt-20'>
 
       {/* Global Floating Particles - Mobile Optimized */}
       {[...Array(8)].map((_, i) => (
@@ -499,6 +506,7 @@ export default function Home() {
       >
         <Footer />
       </motion.section>
+      </div>
     </div>
   );
 }

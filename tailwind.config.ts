@@ -10,8 +10,20 @@ const config: Config = {
     extend: {
       screens: {
         xs: '475px',
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        '2xl': '1536px',
         '3xl': '1600px',
         '4xl': '1920px',
+        // Custom breakpoints for better mobile support
+        mobile: { max: '767px' },
+        tablet: { min: '768px', max: '1023px' },
+        desktop: { min: '1024px' },
+        // Touch device support
+        touch: { raw: '(hover: none) and (pointer: coarse)' },
+        'no-touch': { raw: '(hover: hover) and (pointer: fine)' },
       },
       colors: {
         background: '#1c1c1c',

@@ -2,7 +2,9 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRef, useState, useEffect } from 'react';
+import ResponsiveContainer from './ResponsiveContainer';
 
 const galleryImages = [
   {
@@ -82,7 +84,7 @@ export default function Gallery() {
   return (
     <section
       ref={ref}
-      className='py-12 xs:py-16 sm:py-20 md:py-24 lg:py-32 px-4 xs:px-6 sm:px-8 lg:px-12 relative overflow-hidden'
+      className='py-12 xs:py-16 sm:py-20 md:py-24 lg:py-32 relative overflow-hidden'
     >
       {/* Enhanced Dynamic Background with Multiple Layers */}
       <div className='absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-gray-800' />
@@ -149,7 +151,7 @@ export default function Gallery() {
         transition={{ type: 'spring', stiffness: 50, damping: 15 }}
       />
 
-      <div className='max-w-7xl mx-auto relative z-10'>
+      <ResponsiveContainer size='xl' padding='lg' className='relative z-10'>
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -249,7 +251,7 @@ export default function Gallery() {
         </motion.div>
 
         {/* Enhanced Gallery Grid with Fixed Parallax */}
-        <div className='grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-6 lg:gap-8'>
+        <div className='grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3 xs:gap-4 sm:gap-6 lg:gap-8'>
           {galleryImages.map((image, index) => {
             return (
               <motion.div
@@ -633,35 +635,37 @@ export default function Gallery() {
                 className='mt-12 flex justify-center'
                 whileHover={{ scale: 1.05 }}
               >
-                <motion.button
-                  className='px-12 py-6 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-black rounded-xl border-2 border-yellow-300/50 shadow-2xl text-xl'
-                  whileHover={{
-                    boxShadow: '0 0 40px rgba(255, 255, 0, 0.8)',
-                    scale: 1.05,
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  animate={{
-                    boxShadow: [
-                      '0 0 0px rgba(255, 255, 0, 0)',
-                      '0 0 20px rgba(255, 255, 0, 0.5)',
-                      '0 0 0px rgba(255, 255, 0, 0)',
-                    ],
-                  }}
-                  transition={{
-                    boxShadow: {
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: 'easeInOut',
-                    },
-                  }}
-                >
-                  VIEW FULL GALLERY
-                </motion.button>
+                <Link href='/gallery'>
+                  <motion.button
+                    className='btn-touch px-8 xs:px-12 py-4 xs:py-6 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-black rounded-xl border-2 border-yellow-300/50 shadow-2xl text-lg xs:text-xl w-full xs:w-auto min-w-[200px]'
+                    whileHover={{
+                      boxShadow: '0 0 40px rgba(255, 255, 0, 0.8)',
+                      scale: 1.05,
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    animate={{
+                      boxShadow: [
+                        '0 0 0px rgba(255, 255, 0, 0)',
+                        '0 0 20px rgba(255, 255, 0, 0.5)',
+                        '0 0 0px rgba(255, 255, 0, 0)',
+                      ],
+                    }}
+                    transition={{
+                      boxShadow: {
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: 'easeInOut',
+                      },
+                    }}
+                  >
+                    VIEW FULL GALLERY
+                  </motion.button>
+                </Link>
               </motion.div>
             </motion.div>
           </div>
         </motion.div>
-      </div>
+      </ResponsiveContainer>
     </section>
   );
 }

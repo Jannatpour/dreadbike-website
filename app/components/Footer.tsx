@@ -24,10 +24,10 @@ const socialLinks = [
 ];
 
 const quickLinks = [
-  { name: 'Services', href: '#services' },
-  { name: 'Gallery', href: '#gallery' },
-  { name: 'About', href: '#about' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Services', href: '/services' },
+  { name: 'Gallery', href: '/gallery' },
+  { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 export default function Footer() {
@@ -88,15 +88,15 @@ export default function Footer() {
         />
       ))}
 
-      <div className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 relative z-10'>
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12'>
+      <div className='max-w-6xl mx-auto px-4 xs:px-6 sm:px-8 lg:px-12 py-12 xs:py-16 sm:py-20 relative z-10'>
+        <div className='grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xs:gap-8 lg:gap-12'>
           {/* Enhanced Logo and Description */}
           <motion.div
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 1, type: 'spring', stiffness: 100 }}
             viewport={{ once: true }}
-            className='md:col-span-2'
+            className='sm:col-span-2 lg:col-span-2'
           >
             <motion.div whileHover={{ scale: 1.05 }} className='mb-8'>
               <Logo variant='clean' size='lg' className='mb-6' />
@@ -379,27 +379,29 @@ export default function Footer() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
           >
-            {['Privacy Policy', 'Terms of Service', 'Warranty'].map(
-              (link, index) => (
-                <motion.a
-                  key={link}
-                  href='#'
-                  className='text-gray-400 hover:text-yellow-400 transition-colors duration-300 relative group'
-                  whileHover={{ y: -2 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
-                >
-                  <span className='group-hover:font-bold transition-all duration-300'>
-                    {link}
-                  </span>
-                  <motion.div
-                    className='absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all duration-300'
-                    whileHover={{ width: '100%' }}
-                  />
-                </motion.a>
-              )
-            )}
+            {[
+              { name: 'Privacy Policy', href: '/privacy-policy' },
+              { name: 'Terms of Service', href: '/terms-of-service' },
+              { name: 'Warranty', href: '/warranty' },
+            ].map((link, index) => (
+              <motion.a
+                key={link.name}
+                href={link.href}
+                className='text-gray-400 hover:text-yellow-400 transition-colors duration-300 relative group'
+                whileHover={{ y: -2 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
+              >
+                <span className='group-hover:font-bold transition-all duration-300'>
+                  {link.name}
+                </span>
+                <motion.div
+                  className='absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all duration-300'
+                  whileHover={{ width: '100%' }}
+                />
+              </motion.a>
+            ))}
           </motion.div>
         </motion.div>
       </div>
