@@ -150,6 +150,7 @@ export default function CTASection({ onBookTuning }: CTASectionProps) {
           >
             <motion.span
               className='block'
+              style={{ textShadow: '0 0 0px rgba(183, 28, 28, 0)' }}
               animate={{
                 textShadow: [
                   '0 0 0px rgba(183, 28, 28, 0)',
@@ -175,6 +176,7 @@ export default function CTASection({ onBookTuning }: CTASectionProps) {
                 type: 'spring',
                 stiffness: 100,
               }}
+              style={{ textShadow: '0 0 0px rgba(255, 102, 0, 0)' }}
               whileHover={{
                 scale: 1.02,
                 textShadow: '0 0 20px rgba(255, 102, 0, 0.8)',
@@ -292,6 +294,7 @@ export default function CTASection({ onBookTuning }: CTASectionProps) {
                     whileHover={{ x: 8 }}
                   >
                     <motion.span
+                      style={{ textShadow: '0 0 0px rgba(255, 255, 255, 0)' }}
                       animate={{
                         textShadow: [
                           '0 0 0px rgba(255, 255, 255, 0)',
@@ -461,6 +464,7 @@ export default function CTASection({ onBookTuning }: CTASectionProps) {
                   </div>
                 </motion.span>
                 <motion.span
+                  style={{ textShadow: '0 0 0px rgba(183, 28, 28, 0)' }}
                   animate={{
                     textShadow: [
                       '0 0 0px rgba(183, 28, 28, 0)',

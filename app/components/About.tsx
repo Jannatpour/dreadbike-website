@@ -84,6 +84,7 @@ export default function About() {
           >
             <motion.span
               className='block'
+              style={{ textShadow: '0 0 0px rgba(183, 28, 28, 0)' }}
               animate={{
                 textShadow: [
                   '0 0 0px rgba(183, 28, 28, 0)',
@@ -109,6 +110,7 @@ export default function About() {
                 type: 'spring',
                 stiffness: 100,
               }}
+              style={{ textShadow: '0 0 0px rgba(183, 28, 28, 0)' }}
               whileHover={{
                 scale: 1.05,
                 textShadow: '0 0 30px rgba(183, 28, 28, 1)',
@@ -398,6 +400,7 @@ export default function About() {
                   </motion.span>
                   <motion.h3
                     className='text-4xl font-black text-red-500'
+                    style={{ textShadow: '0 0 0px rgba(183, 28, 28, 0)' }}
                     animate={{
                       textShadow: [
                         '0 0 0px rgba(183, 28, 28, 0)',

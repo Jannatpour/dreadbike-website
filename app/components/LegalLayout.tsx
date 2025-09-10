@@ -69,7 +69,7 @@ export default function LegalLayout({ children, title, lastUpdated }: LegalLayou
               transition={{ duration: 0.8 }}
             >
               <Link href='/' className='block'>
-                <Logo variant='gritty' size='md' />
+                <Logo variant='gritty' size='lg' />
               </Link>
             </motion.div>
             

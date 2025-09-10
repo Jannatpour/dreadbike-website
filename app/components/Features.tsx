@@ -320,6 +320,7 @@ export default function Features() {
 
                     <motion.p
                       className='text-red-500 font-bold text-lg tracking-wider'
+                      style={{ textShadow: '0 0 0px rgba(183, 28, 28, 0)' }}
                       animate={{
                         textShadow: [
                           '0 0 0px rgba(183, 28, 28, 0)',

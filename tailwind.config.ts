@@ -53,6 +53,47 @@ const config: Config = {
         input: '#3a3a3a',
         ring: '#ff6600',
         texture: '#f8f8f8',
+        // Override gray colors with hex values to avoid OKLCH issues
+        gray: {
+          50: '#f9fafb',
+          100: '#f3f4f6',
+          200: '#e5e7eb',
+          300: '#d1d5db',
+          400: '#9ca3af',
+          500: '#6b7280',
+          600: '#4b5563',
+          700: '#374151',
+          800: '#1f2937',
+          900: '#111827',
+          950: '#030712',
+        },
+        // Override other potentially problematic colors
+        slate: {
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          200: '#e2e8f0',
+          300: '#cbd5e1',
+          400: '#94a3b8',
+          500: '#64748b',
+          600: '#475569',
+          700: '#334155',
+          800: '#1e293b',
+          900: '#0f172a',
+          950: '#020617',
+        },
+        neutral: {
+          50: '#fafafa',
+          100: '#f5f5f5',
+          200: '#e5e5e5',
+          300: '#d4d4d4',
+          400: '#a3a3a3',
+          500: '#737373',
+          600: '#525252',
+          700: '#404040',
+          800: '#262626',
+          900: '#171717',
+          950: '#0a0a0a',
+        },
       },
       backgroundColor: {
         background: '#1c1c1c',
@@ -161,7 +202,31 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // Plugin to ensure all colors use hex values instead of OKLCH
+    function ({ addBase }: any) {
+      addBase({
+        ':root': {
+          '--tw-prose-body': '#374151',
+          '--tw-prose-headings': '#111827',
+          '--tw-prose-lead': '#4b5563',
+          '--tw-prose-links': '#111827',
+          '--tw-prose-bold': '#111827',
+          '--tw-prose-counters': '#6b7280',
+          '--tw-prose-bullets': '#d1d5db',
+          '--tw-prose-hr': '#e5e7eb',
+          '--tw-prose-quotes': '#111827',
+          '--tw-prose-quote-borders': '#e5e7eb',
+          '--tw-prose-captions': '#6b7280',
+          '--tw-prose-code': '#111827',
+          '--tw-prose-pre-code': '#e5e7eb',
+          '--tw-prose-pre-bg': '#1f2937',
+          '--tw-prose-th-borders': '#d1d5db',
+          '--tw-prose-td-borders': '#e5e7eb',
+        },
+      });
+    },
+  ],
 };
 
 export default config;

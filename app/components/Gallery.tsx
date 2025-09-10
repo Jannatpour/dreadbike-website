@@ -106,36 +106,32 @@ export default function Gallery() {
         <div className='absolute top-1/2 left-1/2 w-96 h-96 border border-orange-500/10 rounded-full' />
       </motion.div>
 
-      {/* Floating Particles with Enhanced Animation */}
-      {[...Array(15)].map((_, i) => (
+      {/* Optimized Floating Particles */}
+      {[...Array(6)].map((_, i) => (
         <motion.div
           key={`particle-${i}`}
           className={`absolute w-1 h-1 rounded-full ${
-            i % 3 === 0
-              ? 'bg-orange-500/40'
-              : i % 3 === 1
-              ? 'bg-blue-500/40'
-              : 'bg-orange-400/40'
+            i % 2 === 0 ? 'bg-orange-500/40' : 'bg-blue-500/40'
           }`}
           initial={{ opacity: 0, scale: 0 }}
           animate={{
             x: [
-              `${10 + (i % 6) * 15}%`,
-              `${90 - (i % 5) * 12}%`,
-              `${10 + (i % 6) * 15}%`,
+              `${20 + (i % 3) * 20}%`,
+              `${80 - (i % 2) * 15}%`,
+              `${20 + (i % 3) * 20}%`,
             ],
             y: [
-              `${10 + (i % 7) * 12}%`,
-              `${90 - (i % 4) * 10}%`,
-              `${10 + (i % 7) * 12}%`,
+              `${20 + (i % 3) * 15}%`,
+              `${80 - (i % 2) * 10}%`,
+              `${20 + (i % 3) * 15}%`,
             ],
-            opacity: [0, 0.8, 0],
+            opacity: [0, 0.6, 0],
             scale: [0, 1, 0],
           }}
           transition={{
-            duration: 6 + (i % 2) * 2,
+            duration: 5 + i,
             repeat: Infinity,
-            delay: i * 0.3,
+            delay: i * 0.8,
             ease: 'easeInOut',
           }}
         />
@@ -168,6 +164,7 @@ export default function Gallery() {
           >
             <motion.h2
               className='text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black mb-6 xs:mb-8 relative'
+              style={{ textShadow: '0 0 0px rgba(255, 255, 0, 0)' }}
               animate={{
                 textShadow: [
                   '0 0 0px rgba(255, 255, 0, 0)',
@@ -406,6 +403,7 @@ export default function Gallery() {
                       {/* Enhanced Title with Glow Effect */}
                       <motion.h3
                         className='text-xl sm:text-2xl lg:text-3xl font-black text-white group-hover:text-yellow-400 transition-colors duration-300'
+                        style={{ textShadow: '0 0 0px rgba(255, 255, 255, 0)' }}
                         whileHover={{
                           textShadow: '0 0 20px rgba(255, 255, 0, 0.8)',
                         }}
@@ -429,7 +427,7 @@ export default function Gallery() {
                       {/* Enhanced Subtitle */}
                       <motion.p
                         className='text-gray-300 font-bold text-sm sm:text-base lg:text-lg'
-                        whileHover={{ color: '#ffffff' }}
+                        whileHover={{ color: 'rgb(255, 255, 255)' }}
                         transition={{ duration: 0.3 }}
                       >
                         {image.subtitle}
@@ -595,6 +593,7 @@ export default function Gallery() {
             >
               <motion.h3
                 className='text-5xl lg:text-6xl font-black mb-8'
+                style={{ textShadow: '0 0 0px rgba(255, 255, 0, 0)' }}
                 animate={{
                   textShadow: [
                     '0 0 0px rgba(255, 255, 0, 0)',

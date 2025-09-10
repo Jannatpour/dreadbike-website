@@ -121,6 +121,7 @@ export default function ContactPage() {
                       height="48"
                       className="h-auto w-auto"
                       src="/images/dreadbike-gritty-logo.png"
+                      priority
                     />
                   </div>
                 </div>

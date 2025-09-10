@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 interface HeroProps {
   onViewServices: () => void;
@@ -9,9 +9,13 @@ interface HeroProps {
 
 export default function Hero({ onViewServices }: HeroProps) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 300], [0, -50]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollY } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
+  const y = useTransform(scrollY, [0, 500], [0, -30]);
+  const opacity = useTransform(scrollY, [0, 500], [1, 0.3]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -23,7 +27,7 @@ export default function Hero({ onViewServices }: HeroProps) {
   }, []);
 
   return (
-    <section className='relative min-h-screen flex items-center justify-center overflow-hidden px-4 xs:px-6 sm:px-8 lg:px-12 xl:px-16'>
+    <section ref={heroRef} className='relative min-h-screen flex items-center justify-center overflow-hidden px-4 xs:px-6 sm:px-8 lg:px-12 xl:px-16' suppressHydrationWarning>
       {/* Cinematic Background Layers */}
       <div className='absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' />
 
@@ -74,27 +78,27 @@ export default function Hero({ onViewServices }: HeroProps) {
         <div className='absolute top-1/2 right-1/3 w-64 h-64 bg-orange-400/15 rounded-full blur-2xl' />
       </motion.div>
 
-      {/* Subtle Particle System */}
+      {/* Optimized Particle System */}
       <div className='absolute inset-0 overflow-hidden'>
-        {[...Array(15)].map((_, i) => (
+        {[...Array(8)].map((_, i) => (
           <motion.div
             key={`particle-${i}`}
             className='absolute w-1 h-1 bg-orange-500/30 rounded-full'
             initial={{
-              x: `${20 + i * 5}%`,
-              y: `${20 + i * 3}%`,
+              x: `${25 + i * 10}%`,
+              y: `${25 + i * 8}%`,
               opacity: 0,
               scale: 0,
             }}
             animate={{
-              y: [`${20 + i * 3}%`, `${80 - i * 2}%`, `${20 + i * 3}%`],
+              y: [`${25 + i * 8}%`, `${75 - i * 5}%`, `${25 + i * 8}%`],
               opacity: [0, 0.6, 0],
               scale: [0, 1, 0],
             }}
             transition={{
-              duration: 6 + i * 0.5,
+              duration: 5 + i * 0.8,
               repeat: Infinity,
-              delay: i * 0.3,
+              delay: i * 0.5,
               ease: 'easeInOut',
             }}
           />
@@ -125,60 +129,58 @@ export default function Hero({ onViewServices }: HeroProps) {
         ))}
       </div>
 
-      {/* Professional Floating Elements */}
-      {[...Array(8)].map((_, i) => (
+      {/* Optimized Professional Floating Elements */}
+      {[...Array(4)].map((_, i) => (
         <motion.div
           key={i}
           className='absolute rounded-full'
           initial={{ opacity: 0 }}
           animate={{
             left: [
-              `${20 + (i % 4) * 20}%`,
-              `${80 - (i % 3) * 15}%`,
-              `${20 + (i % 4) * 20}%`,
+              `${30 + (i % 2) * 30}%`,
+              `${70 - (i % 2) * 20}%`,
+              `${30 + (i % 2) * 30}%`,
             ],
             top: [
-              `${20 + (i % 3) * 20}%`,
-              `${80 - (i % 2) * 15}%`,
-              `${20 + (i % 3) * 20}%`,
+              `${30 + (i % 2) * 20}%`,
+              `${70 - (i % 2) * 10}%`,
+              `${30 + (i % 2) * 20}%`,
             ],
-            width: [`${3 + (i % 2)}px`, `${5 + (i % 2)}px`, `${3 + (i % 2)}px`],
-            height: [
-              `${3 + (i % 2)}px`,
-              `${5 + (i % 2)}px`,
-              `${3 + (i % 2)}px`,
-            ],
-            y: [0, -80, 0],
+            y: [0, -60, 0],
             opacity: [0, 0.7, 0],
             scale: [0, 1, 0],
           }}
           transition={{
-            duration: 6 + (i % 2),
+            duration: 5 + i,
             repeat: Infinity,
-            delay: i * 0.8,
+            delay: i * 1.2,
             ease: 'easeInOut',
+          }}
+          style={{
+            width: `${3 + (i % 2)}px`,
+            height: `${3 + (i % 2)}px`,
           }}
         >
           <div className='w-full h-full bg-orange-500/60 rounded-full shadow-sm shadow-orange-500/30' />
         </motion.div>
       ))}
 
-      {/* Subtle Energy Rings */}
-      {[...Array(3)].map((_, i) => (
+      {/* Optimized Energy Rings */}
+      {[...Array(2)].map((_, i) => (
         <motion.div
           key={`burst-${i}`}
           className='absolute w-24 h-24 border border-orange-500/20 rounded-full'
           initial={{ opacity: 0 }}
           animate={{
-            left: [`${30 + i * 20}%`, `${70 - i * 10}%`, `${30 + i * 20}%`],
-            top: [`${30 + i * 15}%`, `${70 - i * 10}%`, `${30 + i * 15}%`],
-            scale: [0, 1.5, 0],
+            left: [`${40 + i * 20}%`, `${60 - i * 10}%`, `${40 + i * 20}%`],
+            top: [`${40 + i * 15}%`, `${60 - i * 10}%`, `${40 + i * 15}%`],
+            scale: [0, 1.2, 0],
             opacity: [0, 0.4, 0],
           }}
           transition={{
-            duration: 8 + i * 2,
+            duration: 6 + i * 2,
             repeat: Infinity,
-            delay: i * 3,
+            delay: i * 4,
             ease: 'easeInOut',
           }}
         />
@@ -264,27 +266,34 @@ export default function Hero({ onViewServices }: HeroProps) {
       ))}
 
       {/* Mouse Follower Glow */}
-      <motion.div
-        className='absolute w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none'
-        animate={{
-          x: mousePosition.x - 192,
-          y: mousePosition.y - 192,
-        }}
-        transition={{ type: 'spring', stiffness: 50, damping: 15 }}
-      />
+        <motion.div
+          className='absolute w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none'
+          animate={{
+            x: mousePosition.x - 192,
+            y: mousePosition.y - 192,
+          }}
+          transition={{ type: 'spring', stiffness: 50, damping: 15 }}
+        />
 
       {/* Parallax Background Elements */}
-      <motion.div style={{ y }} className='absolute inset-0 opacity-30'>
+      <motion.div 
+        initial={{ y: 0 }}
+        style={{ y }} 
+        className='absolute inset-0 opacity-30'
+        suppressHydrationWarning
+      >
         <div className='absolute top-1/4 left-1/4 w-32 h-32 border border-accent/30' />
         <div className='absolute top-3/4 right-1/4 w-24 h-24 border border-accent/20' />
         <div className='absolute top-1/2 right-1/3 w-16 h-16 border border-accent/40' />
       </motion.div>
 
-      {/* Main Content with Cinematic Effects */}
-      <motion.div
-        style={{ opacity }}
-        className='relative z-10 text-center w-full max-w-7xl mx-auto'
-      >
+        {/* Main Content with Cinematic Effects */}
+        <motion.div 
+          initial={{ opacity: 1 }}
+          style={{ opacity }} 
+          className='relative z-10 text-center w-full max-w-7xl mx-auto'
+          suppressHydrationWarning
+        >
         {/* Dynamic Text-Based Hero Title */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: 100 }}
@@ -329,7 +338,8 @@ export default function Hero({ onViewServices }: HeroProps) {
             className='relative z-10'
             whileHover={{
               scale: 1.02,
-              filter: 'brightness(1.1) drop-shadow(0 0 30px rgba(255, 165, 0, 0.8))',
+              filter:
+                'brightness(1.1) drop-shadow(0 0 30px rgba(255, 165, 0, 0.8))',
             }}
             transition={{ duration: 0.3 }}
           >
@@ -372,21 +382,21 @@ export default function Hero({ onViewServices }: HeroProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2, duration: 1 }}
             >
-              <motion.p
-                className='text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300 font-bold tracking-wider'
-                animate={{
-                  textShadow: [
-                    '0 0 10px rgba(255, 165, 0, 0.5)',
-                    '0 0 20px rgba(255, 165, 0, 0.8)',
-                    '0 0 10px rgba(255, 165, 0, 0.5)',
-                  ],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              >
+                <motion.p
+                  className='text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300 font-bold tracking-wider'
+                  animate={{
+                    filter: [
+                      'drop-shadow(0 0 10px rgba(255, 165, 0, 0.5))',
+                      'drop-shadow(0 0 20px rgba(255, 165, 0, 0.8))',
+                      'drop-shadow(0 0 10px rgba(255, 165, 0, 0.5))',
+                    ],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                >
                 <span className='text-yellow-400'>UNLEASH</span>{' '}
                 <span className='text-white'>THE FEAR</span>
               </motion.p>
@@ -404,7 +414,6 @@ export default function Hero({ onViewServices }: HeroProps) {
             }}
           />
         </motion.div>
-
 
         {/* Creative Subtitle with Typewriter Effect */}
         <motion.div
@@ -452,22 +461,22 @@ export default function Hero({ onViewServices }: HeroProps) {
           className='flex flex-col items-center gap-3'
         >
           {/* Pulsing Text */}
-          <motion.span
-            className='text-yellow-400 text-sm font-bold tracking-wider'
-            animate={{
-              opacity: [0.7, 1, 0.7],
-              textShadow: [
-                '0 0 0px rgba(255, 255, 0, 0)',
-                '0 0 10px rgba(255, 255, 0, 0.8)',
-                '0 0 0px rgba(255, 255, 0, 0)',
-              ],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-          >
+            <motion.span
+              className='text-yellow-400 text-sm font-bold tracking-wider'
+              animate={{
+                opacity: [0.7, 1, 0.7],
+                filter: [
+                  'drop-shadow(0 0 0px rgba(255, 255, 0, 0))',
+                  'drop-shadow(0 0 10px rgba(255, 255, 0, 0.8))',
+                  'drop-shadow(0 0 0px rgba(255, 255, 0, 0))',
+                ],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            >
             SCROLL
           </motion.span>
 

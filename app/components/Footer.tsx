@@ -127,7 +127,7 @@ export default function Footer() {
             >
               <motion.p
                 className='flex items-center gap-2'
-                whileHover={{ x: 5, color: '#ffff00' }}
+                whileHover={{ x: 5, color: 'rgb(255, 255, 0)' }}
               >
                 <motion.span
                   animate={{ scale: [1, 1.05, 1] }}
@@ -139,7 +139,7 @@ export default function Footer() {
               </motion.p>
               <motion.p
                 className='flex items-center gap-2'
-                whileHover={{ x: 5, color: '#ffff00' }}
+                whileHover={{ x: 5, color: 'rgb(255, 255, 0)' }}
               >
                 <motion.span
                   animate={{ scale: [1, 1.2, 1] }}
@@ -155,9 +155,10 @@ export default function Footer() {
               </motion.p>
               <motion.p
                 className='flex items-center gap-2'
-                whileHover={{ x: 5, color: '#ffff00' }}
+                whileHover={{ x: 5, color: 'rgb(255, 255, 0)' }}
               >
                 <motion.span
+                  style={{ textShadow: '0 0 0px rgba(255, 255, 0, 0)' }}
                   animate={{
                     textShadow: [
                       '0 0 0px rgba(255, 255, 0, 0)',
@@ -346,6 +347,7 @@ export default function Footer() {
                 width={48}
                 height={48}
                 className='object-contain'
+                priority
                 onLoad={() => console.log('PNG logo loaded successfully')}
                 onError={e => {
                   console.log('PNG failed to load, trying SVG:', e);
