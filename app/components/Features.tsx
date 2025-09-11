@@ -11,43 +11,43 @@ import {
 
 const features = [
   {
-    title: 'PERFORMANCE TUNING',
-    subtitle: 'PRECISION ENGINEERING',
+    title: 'PROFESSIONAL GEAR',
+    subtitle: 'RACE-PROVEN EQUIPMENT',
     description:
-      "Advanced ECU remapping and engine optimization to maximize your motorcycle's potential. Our certified technicians use state-of-the-art diagnostic equipment to deliver measurable performance gains.",
+      'Premium motorcycle gear trusted by professional riders worldwide. From advanced helmets to protective suits, every piece is engineered for maximum safety, comfort, and performance on the track and street.',
     details: [
-      'ECU Remapping & Tuning',
-      'Performance Air Intake Systems',
-      'High-Flow Exhaust Upgrades',
-      'Dyno Testing & Validation',
+      'Professional Racing Helmets',
+      'High-Performance Riding Suits',
+      'Advanced Protection Systems',
+      'Competition-Grade Gloves & Boots',
     ],
     gradient: 'from-orange-400 via-orange-500 to-orange-600',
     glowColor: 'shadow-orange-500/50',
   },
   {
-    title: 'CUSTOM MODIFICATIONS',
-    subtitle: 'BESPOKE SOLUTIONS',
+    title: 'PREMIUM ACCESSORIES',
+    subtitle: 'LUXURY COMPONENTS',
     description:
-      'Tailored modifications designed specifically for your riding style and performance goals. From engine builds to suspension upgrades, we create solutions that fit your exact needs.',
+      'Carefully curated accessories that combine functionality with style. From carbon fiber components to titanium hardware, each accessory is selected for its superior quality and aesthetic appeal.',
     details: [
-      'Custom Engine Builds',
-      'Suspension Tuning & Upgrades',
-      'Brake System Enhancements',
-      'Transmission Optimization',
+      'Carbon Fiber Body Components',
+      'Titanium Hardware & Fasteners',
+      'Premium Lighting Systems',
+      'Custom Instrument Clusters',
     ],
     gradient: 'from-blue-500 via-blue-600 to-blue-700',
     glowColor: 'shadow-blue-500/50',
   },
   {
-    title: 'AESTHETIC ENHANCEMENTS',
-    subtitle: 'STUNNING VISUALS',
+    title: 'CUSTOM PARTS',
+    subtitle: 'BESPOKE MANUFACTURING',
     description:
-      "Transform your motorcycle's appearance with professional paint work, custom graphics, and premium accessories. Every detail is crafted to reflect your personal style and brand.",
+      "One-of-a-kind custom parts manufactured to your exact specifications. Our in-house fabrication team creates unique components that can't be found anywhere else, tailored to your vision and performance needs.",
     details: [
-      'Custom Paint & Graphics',
-      'Premium Body Kits',
-      'LED Lighting Systems',
-      'Custom Seat & Upholstery',
+      'Custom Exhaust Systems',
+      'Bespoke Suspension Components',
+      'Personalized Body Panels',
+      'Unique Performance Upgrades',
     ],
     gradient: 'from-orange-500 via-orange-600 to-orange-700',
     glowColor: 'shadow-orange-500/50',
@@ -104,23 +104,23 @@ export default function Features() {
             whileInView={{ scale: 1 }}
             transition={{ duration: 0.8, type: 'spring', stiffness: 100 }}
           >
-            <span className='holographic'>WHY</span>{' '}
-            <span className='neon-text text-accent'>DREADBIKE</span>
+            <span className='holographic'>PREMIUM</span>{' '}
+            <span className='neon-text text-accent'>PRODUCTS</span>
           </motion.h2>
           <p className='text-base xs:text-lg sm:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed px-4'>
-            Our comprehensive approach combines{' '}
+            Discover our curated collection of{' '}
             <span className='text-orange-500 font-semibold'>
-              technical expertise
+              professional-grade gear
             </span>
             ,{' '}
             <span className='text-blue-500 font-semibold'>
-              custom solutions
+              luxury accessories
             </span>
             , and{' '}
             <span className='text-orange-500 font-semibold'>
-              quality craftsmanship
+              custom components
             </span>{' '}
-            to deliver exceptional results.
+            designed for the ultimate riding experience.
           </p>
         </motion.div>
 

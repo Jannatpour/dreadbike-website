@@ -10,12 +10,22 @@ interface LegalLayoutProps {
   lastUpdated: string;
 }
 
-export default function LegalLayout({ children, title, lastUpdated }: LegalLayoutProps) {
+export default function LegalLayout({
+  children,
+  title,
+  lastUpdated,
+}: LegalLayoutProps) {
   return (
     <div className='min-h-screen bg-background text-foreground relative'>
       {/* Background Effects */}
-      <div className='fixed inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' />
-      <div className="fixed inset-0 bg-[url('/images/texture-overlay.png')] opacity-5 mix-blend-overlay" />
+      <div
+        className='fixed inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900'
+        style={{ zIndex: -3 }}
+      />
+      <div
+        className="fixed inset-0 bg-[url('/images/texture-overlay.png')] opacity-5 mix-blend-overlay"
+        style={{ zIndex: -2 }}
+      />
 
       {/* Animated Grid Pattern */}
       <motion.div
@@ -34,6 +44,7 @@ export default function LegalLayout({ children, title, lastUpdated }: LegalLayou
             linear-gradient(90deg, rgba(255, 165, 0, 0.1) 1px, transparent 1px)
           `,
           backgroundSize: '40px 40px',
+          zIndex: -1,
         }}
       />
 
@@ -72,14 +83,16 @@ export default function LegalLayout({ children, title, lastUpdated }: LegalLayou
                 <Logo variant='gritty' size='lg' />
               </Link>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className='text-right'
             >
-              <p className='text-gray-400 text-sm'>Last Updated: {lastUpdated}</p>
+              <p className='text-gray-400 text-sm'>
+                Last Updated: {lastUpdated}
+              </p>
             </motion.div>
           </div>
         </div>
@@ -103,7 +116,7 @@ export default function LegalLayout({ children, title, lastUpdated }: LegalLayou
                 {title}
               </span>
             </motion.h1>
-            
+
             <motion.div
               className='w-32 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent mx-auto'
               initial={{ width: 0 }}
@@ -135,7 +148,11 @@ export default function LegalLayout({ children, title, lastUpdated }: LegalLayou
             >
               <motion.span
                 animate={{ x: [-2, 2, -2] }}
-                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
               >
                 ←
               </motion.span>
@@ -153,13 +170,22 @@ export default function LegalLayout({ children, title, lastUpdated }: LegalLayou
               © 2025 DreadBike. All rights reserved.
             </p>
             <div className='flex justify-center space-x-8 text-sm'>
-              <Link href='/privacy-policy' className='text-gray-400 hover:text-yellow-400 transition-colors duration-300'>
+              <Link
+                href='/privacy-policy'
+                className='text-gray-400 hover:text-yellow-400 transition-colors duration-300'
+              >
                 Privacy Policy
               </Link>
-              <Link href='/terms-of-service' className='text-gray-400 hover:text-yellow-400 transition-colors duration-300'>
+              <Link
+                href='/terms-of-service'
+                className='text-gray-400 hover:text-yellow-400 transition-colors duration-300'
+              >
                 Terms of Service
               </Link>
-              <Link href='/warranty' className='text-gray-400 hover:text-yellow-400 transition-colors duration-300'>
+              <Link
+                href='/warranty'
+                className='text-gray-400 hover:text-yellow-400 transition-colors duration-300'
+              >
                 Warranty
               </Link>
             </div>

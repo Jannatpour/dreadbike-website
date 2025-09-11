@@ -224,6 +224,113 @@ body {
   letter-spacing: -0.02em;
 }
 
+/* Featured Section Visibility Fix */
+.featured-section-title {
+  position: relative !important;
+  z-index: 50 !important;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9) !important;
+}
+
+.featured-section-title .gradient-text {
+  background: linear-gradient(to right, #facc15, #eab308, #facc15) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  color: #facc15 !important; /* Fallback */
+  position: relative !important;
+  z-index: 51 !important;
+}
+
+/* Ensure gradient text is visible on all browsers */
+@supports not (-webkit-background-clip: text) {
+  .featured-section-title .gradient-text {
+    color: #facc15 !important;
+    -webkit-text-fill-color: #facc15 !important;
+  }
+}
+
+/* Additional visibility fixes for shop page titles */
+.shop-section-title {
+  position: relative !important;
+  z-index: 50 !important;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9) !important;
+  color: white !important;
+}
+
+/* Enhanced gradient text visibility with elegant fallbacks */
+.text-transparent.bg-clip-text {
+  /* Ensure gradient text works properly */
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+
+  /* Elegant fallback for browsers that don't support gradient text */
+  color: transparent;
+}
+
+/* Fallback support for older browsers */
+@supports not (-webkit-background-clip: text) {
+  .text-transparent.bg-clip-text {
+    color: #facc15 !important;
+    -webkit-text-fill-color: #facc15 !important;
+  }
+}
+
+/* Safari-specific fixes */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .text-transparent.bg-clip-text {
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+}
+
+/* Ensure text is always readable in high contrast mode */
+@media (prefers-contrast: high) {
+  .text-transparent.bg-clip-text {
+    color: #facc15 !important;
+    -webkit-text-fill-color: #facc15 !important;
+  }
+}
+
+/* Force visibility only when gradient fails to render */
+.text-transparent.bg-clip-text:not([style*='background']) {
+  color: #facc15 !important;
+}
+
+/* Improve visibility of low contrast text */
+.text-gray-500 {
+  color: #9ca3af !important;
+}
+
+.text-gray-600 {
+  color: #6b7280 !important;
+}
+
+.text-gray-700 {
+  color: #4b5563 !important;
+}
+
+/* Ensure disabled elements are still readable */
+.disabled\:opacity-50:disabled,
+.opacity-50 {
+  opacity: 0.7 !important;
+}
+
+.disabled\:opacity-60:disabled,
+.opacity-60 {
+  opacity: 0.8 !important;
+}
+
+/* Improve text visibility on dark backgrounds */
+.text-muted-foreground {
+  color: #a1a1aa !important;
+}
+
+/* Ensure placeholder text is visible */
+.placeholder\:text-muted-foreground::placeholder {
+  color: #a1a1aa !important;
+}
+
 /* Distressed Border Effect */
 .border-distressed-enhanced {
   position: relative;
@@ -678,7 +785,7 @@ body {
 
 /* Ensure mobile menu is always on top */
 .mobile-menu-overlay {
-  z-index: 9999 !important;
+  z-index: 99999 !important;
 }
 
 /* Better touch targets for mobile */
@@ -688,11 +795,11 @@ body {
     min-width: 44px;
     padding: 12px 16px;
   }
-  
+
   /* Ensure mobile menu button is clickable */
   .mobile-menu-button {
     position: relative;
-    z-index: 10001 !important;
+    z-index: 100000 !important;
     touch-action: manipulation;
   }
 
@@ -705,7 +812,39 @@ body {
 
   /* Ensure mobile menu content is properly positioned */
   .mobile-menu-content {
-    z-index: 10000 !important;
+    z-index: 99999 !important;
     position: relative;
+  }
+
+  /* Additional mobile menu fixes */
+  .mobile-menu-overlay * {
+    z-index: inherit;
+  }
+
+  /* Ensure mobile menu is above all other content */
+  .mobile-menu-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    pointer-events: auto !important;
+  }
+
+  /* Smart mobile header optimizations */
+  @media (max-width: 374px) {
+    .mobile-header-compact {
+      padding-left: 0.5rem !important;
+      padding-right: 0.5rem !important;
+    }
+
+    .mobile-logo-compact {
+      max-width: 100px !important;
+      height: 1.75rem !important; /* h-7 */
+    }
+
+    .mobile-icons-compact {
+      gap: 0.125rem !important; /* space-x-0.5 */
+    }
   }
 }

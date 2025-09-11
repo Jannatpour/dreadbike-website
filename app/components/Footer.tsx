@@ -24,10 +24,24 @@ const socialLinks = [
 ];
 
 const quickLinks = [
-  { name: 'Services', href: '/services' },
-  { name: 'Gallery', href: '/gallery' },
-  { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Professional Gear', href: '/gear' },
+  { name: 'Custom Parts', href: '/parts' },
+  { name: 'Premium Accessories', href: '/accessories' },
+  { name: 'Product Catalog', href: '/catalog' },
+];
+
+const customerLinks = [
+  { name: 'Size Guide', href: '/size-guide' },
+  { name: 'Warranty Info', href: '/warranty' },
+  { name: 'Shipping & Returns', href: '/shipping-returns' },
+  { name: 'Track Your Order', href: '/track-order' },
+];
+
+const trustSignals = [
+  { icon: '🏆', text: 'Industry Leading Quality' },
+  { icon: '🚚', text: 'Free Shipping $500+' },
+  { icon: '🔒', text: 'Secure Checkout' },
+  { icon: '💯', text: '100% Satisfaction Guarantee' },
 ];
 
 export default function Footer() {
@@ -108,15 +122,15 @@ export default function Footer() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              DreadBike transforms ordinary motorcycles into{' '}
+              Your trusted source for{' '}
               <motion.span
                 className='text-yellow-400 font-bold'
                 whileHover={{ scale: 1.1 }}
               >
-                mechanical nightmares
-              </motion.span>{' '}
-              that dominate the road. We forge bikes that command respect and
-              strike fear into the hearts of lesser riders.
+                professional-grade motorcycle gear
+              </motion.span>
+              , precision-engineered parts, and premium accessories. Every
+              product rigorously tested by championship riders worldwide.
             </motion.p>
 
             <motion.div
@@ -135,7 +149,7 @@ export default function Footer() {
                 >
                   📍
                 </motion.span>
-                13 Fear Street, Terror City, TC 66666
+                Professional Gear Headquarters, Los Angeles, CA
               </motion.p>
               <motion.p
                 className='flex items-center gap-2'
@@ -151,7 +165,7 @@ export default function Footer() {
                 >
                   📞
                 </motion.span>
-                +1 (666) DREAD-BIKE
+                +1 (800) GEAR-PRO
               </motion.p>
               <motion.p
                 className='flex items-center gap-2'
@@ -174,7 +188,7 @@ export default function Footer() {
                 >
                   ✉️
                 </motion.span>
-                contact@dreadbike.com
+                orders@dreadbike.com
               </motion.p>
             </motion.div>
           </motion.div>
@@ -195,7 +209,7 @@ export default function Footer() {
               className='text-xl font-black text-yellow-400 mb-6'
               whileHover={{ scale: 1.05 }}
             >
-              QUICK LINKS
+              SHOP CATEGORIES
             </motion.h3>
             <ul className='space-y-3'>
               {quickLinks.map((link, index) => (
@@ -232,7 +246,7 @@ export default function Footer() {
             </ul>
           </motion.div>
 
-          {/* Enhanced Social Links */}
+          {/* Customer Service Links */}
           <motion.div
             initial={{ opacity: 0, y: 50, x: 30 }}
             whileInView={{ opacity: 1, y: 0, x: 0 }}
@@ -248,59 +262,68 @@ export default function Footer() {
               className='text-xl font-black text-yellow-400 mb-6'
               whileHover={{ scale: 1.05 }}
             >
-              FOLLOW THE FEAR
+              CUSTOMER CARE
             </motion.h3>
-            <div className='flex space-x-6 mb-6'>
-              {socialLinks.map((social, index) => (
-                <motion.a
-                  key={social.name}
-                  href={social.href}
-                  className='text-3xl hover:scale-125 transition-transform duration-300 relative group'
-                  aria-label={social.name}
-                  whileHover={{ y: -5 }}
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+            <ul className='space-y-3'>
+              {customerLinks.map((link, index) => (
+                <motion.li
+                  key={link.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                 >
-                  <motion.span
-                    className='text-2xl font-bold text-yellow-400'
-                    animate={{
-                      scale: [1, 1.05, 1],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: 'easeInOut',
-                      delay: index * 0.3,
-                    }}
+                  <motion.a
+                    href={link.href}
+                    className='text-gray-300 hover:text-yellow-400 transition-colors duration-300 flex items-center gap-2 group'
+                    whileHover={{ x: 5 }}
                   >
-                    {social.name.charAt(0)}
-                  </motion.span>
-
-                  {/* Hover Glow Effect */}
-                  <motion.div
-                    className='absolute inset-0 bg-yellow-400/20 rounded-full blur-lg scale-0 group-hover:scale-150 transition-all duration-300'
-                    initial={{ scale: 0 }}
-                    whileHover={{ scale: 1.5 }}
-                  />
-                </motion.a>
+                    <motion.span
+                      className='w-2 h-2 bg-green-400 rounded-full'
+                      animate={{
+                        scale: [1, 1.5, 1],
+                        opacity: [0.5, 1, 0.5],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: 'easeInOut',
+                        delay: index * 0.2,
+                      }}
+                    />
+                    <span className='group-hover:font-bold transition-all duration-300'>
+                      {link.name}
+                    </span>
+                  </motion.a>
+                </motion.li>
               ))}
-            </div>
-            <motion.p
-              className='text-gray-400 text-sm'
+            </ul>
+
+            {/* Trust Signals */}
+            <motion.div
+              className='mt-8'
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
             >
-              Join our community of riders who{' '}
-              <motion.span
-                className='text-yellow-400 font-bold'
-                whileHover={{ scale: 1.1 }}
-              >
-                refuse to be ordinary
-              </motion.span>
-              .
-            </motion.p>
+              <h4 className='text-sm font-bold text-green-400 mb-4'>
+                WHY CHOOSE US:
+              </h4>
+              <div className='space-y-2'>
+                {trustSignals.map((signal, index) => (
+                  <motion.div
+                    key={index}
+                    className='flex items-center gap-2 text-sm text-gray-400'
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
+                    whileHover={{ x: 5, color: 'rgb(34, 197, 94)' }}
+                  >
+                    <span className='text-base'>{signal.icon}</span>
+                    <span>{signal.text}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </motion.div>
         </div>
 

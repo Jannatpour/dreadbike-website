@@ -1,0 +1,32 @@
+const fs = require('fs');
+const path = require('path');
+
+// Create a simple SVG texture pattern that can be converted to PNG
+const svgTexture = `<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="texture" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/>
+      <circle cx="5" cy="5" r="0.5" fill="rgba(255,255,255,0.05)"/>
+      <circle cx="15" cy="15" r="0.5" fill="rgba(255,255,255,0.05)"/>
+    </pattern>
+  </defs>
+  <rect width="100" height="100" fill="url(#texture)"/>
+</svg>`;
+
+// Write the SVG file temporarily
+const tempSvgPath = path.join(
+  __dirname,
+  '..',
+  'public',
+  'images',
+  'texture-overlay.svg'
+);
+fs.writeFileSync(tempSvgPath, svgTexture);
+
+console.log('Created texture-overlay.svg');
+console.log(
+  'Note: You may want to convert this to PNG using an image editor or online converter'
+);
+console.log(
+  'For now, you can also use the SVG directly by updating the CSS references'
+);

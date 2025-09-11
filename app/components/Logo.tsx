@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface LogoProps {
   variant?: 'clean' | 'gritty';
@@ -22,6 +22,11 @@ export default function Logo({
 }: LogoProps) {
   const dimensions = sizeMap[size];
   const [imageError, setImageError] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const getTextSize = () => {
     switch (size) {
@@ -37,6 +42,24 @@ export default function Logo({
         return 'text-xl xs:text-2xl sm:text-3xl md:text-4xl';
     }
   };
+
+  // Prevent hydration mismatch by ensuring consistent initial render
+  if (!isClient) {
+    return (
+      <div className={cn('relative', className)}>
+        <div className='flex items-center justify-center'>
+          <div
+            className={cn(
+              'font-black text-orange-500 tracking-wider',
+              getTextSize()
+            )}
+          >
+            DREADBIKE
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={cn('relative', className)}>

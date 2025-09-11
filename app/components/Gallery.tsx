@@ -8,51 +8,51 @@ import ResponsiveContainer from './ResponsiveContainer';
 
 const galleryImages = [
   {
-    src: '/images/gallery-bike-1.jpg',
-    alt: 'Professional Motorcycle Performance Tuning',
-    title: 'PERFORMANCE TUNING',
-    subtitle: 'ECU Remapping & Engine Optimization',
-    category: 'Performance',
+    src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop',
+    alt: 'Professional Racing Helmets & Safety Gear',
+    title: 'RACING HELMETS',
+    subtitle: 'Professional-Grade Protection',
+    category: 'Safety Gear',
     gradient: 'from-yellow-400 to-yellow-500',
   },
   {
-    src: '/images/gallery-bike-2.jpg',
-    alt: 'Custom Motorcycle Modifications & Upgrades',
-    title: 'CUSTOM MODIFICATIONS',
-    subtitle: 'Bespoke Solutions & Upgrades',
-    category: 'Custom',
+    src: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=600&h=400&fit=crop',
+    alt: 'Premium Carbon Fiber Accessories',
+    title: 'CARBON FIBER PARTS',
+    subtitle: 'Lightweight Performance Components',
+    category: 'Accessories',
     gradient: 'from-yellow-300 to-yellow-400',
   },
   {
-    src: '/images/gallery-bike-3.jpg',
-    alt: 'Professional Engine Build & Tuning',
-    title: 'ENGINE BUILD',
-    subtitle: 'High-Performance Engine Work',
-    category: 'Engine',
+    src: 'https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=600&h=400&fit=crop',
+    alt: 'Custom Exhaust Systems & Performance Parts',
+    title: 'CUSTOM EXHAUSTS',
+    subtitle: 'Bespoke Performance Systems',
+    category: 'Custom Parts',
     gradient: 'from-yellow-400 to-yellow-600',
   },
   {
-    src: '/images/gallery-bike-4.jpg',
-    alt: 'Suspension Tuning & Brake Upgrades',
-    title: 'SUSPENSION TUNE',
-    subtitle: 'Precision Handling & Control',
-    category: 'Suspension',
+    src: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=600&h=400&fit=crop',
+    alt: 'High-Performance Riding Suits & Gear',
+    title: 'RIDING SUITS',
+    subtitle: 'Professional Racing Apparel',
+    category: 'Gear',
     gradient: 'from-yellow-300 to-yellow-500',
   },
   {
-    src: '/images/gallery-bike-5.jpg',
-    alt: 'Exhaust System & Air Intake Upgrades',
-    title: 'EXHAUST SYSTEM',
-    subtitle: 'Performance Air & Exhaust',
-    category: 'Exhaust',
+    src: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&h=400&fit=crop',
+    alt: 'Premium LED Lighting & Electronics',
+    title: 'LED SYSTEMS',
+    subtitle: 'Advanced Lighting Solutions',
+    category: 'Electronics',
     gradient: 'from-yellow-500 to-yellow-600',
   },
   {
-    src: '/images/gallery-bike-6.jpg',
-    alt: 'Brake System Upgrades & Safety Modifications',
-    title: 'BRAKE UPGRADE',
-    subtitle: 'Enhanced Safety & Performance',
-    category: 'Brakes',
+    src: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&h=400&fit=crop',
+    alt: 'Titanium Hardware & Premium Components',
+    title: 'TITANIUM PARTS',
+    subtitle: 'Luxury Performance Hardware',
+    category: 'Premium',
     gradient: 'from-yellow-400 to-yellow-700',
   },
 ];
@@ -211,7 +211,7 @@ export default function Gallery() {
                   textShadow: '0 0 30px rgba(255, 255, 0, 0.8)',
                 }}
               >
-                GALLERY
+                PRODUCT SHOWCASE
               </motion.span>
             </motion.h2>
 
@@ -230,18 +230,18 @@ export default function Gallery() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            Discover our{' '}
+            Explore our{' '}
             <span className='text-yellow-400 font-semibold'>
-              portfolio of custom builds
+              premium product collection
             </span>{' '}
-            and witness the precision engineering that goes into every
-            motorcycle we tune. Each project demonstrates our commitment to{' '}
+            featuring the finest motorcycle gear, accessories, and custom parts.
+            Each item represents our commitment to{' '}
             <span className='text-yellow-300 font-semibold'>
-              quality craftsmanship
+              professional-grade quality
             </span>{' '}
             and{' '}
             <span className='text-yellow-400 font-semibold'>
-              performance excellence
+              uncompromising performance
             </span>
             .
           </motion.p>

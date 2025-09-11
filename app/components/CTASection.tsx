@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -149,13 +150,13 @@ export default function CTASection({ onBookTuning }: CTASectionProps) {
             transition={{ duration: 1, delay: 0.2 }}
           >
             <motion.span
-              className='block'
-              style={{ textShadow: '0 0 0px rgba(183, 28, 28, 0)' }}
+              className='block text-yellow-400'
+              style={{ textShadow: '0 0 0px rgba(255, 255, 0, 0)' }}
               animate={{
                 textShadow: [
-                  '0 0 0px rgba(183, 28, 28, 0)',
-                  '0 0 30px rgba(183, 28, 28, 0.8)',
-                  '0 0 0px rgba(183, 28, 28, 0)',
+                  '0 0 0px rgba(255, 255, 0, 0)',
+                  '0 0 30px rgba(255, 255, 0, 0.8)',
+                  '0 0 0px rgba(255, 255, 0, 0)',
                 ],
               }}
               transition={{
@@ -182,10 +183,10 @@ export default function CTASection({ onBookTuning }: CTASectionProps) {
                 textShadow: '0 0 20px rgba(255, 102, 0, 0.8)',
               }}
             >
-              TRANSFORM
+              DOMINATE
             </motion.span>
             <motion.span
-              className='block mt-2'
+              className='block mt-2 text-white'
               initial={{ x: 100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{
@@ -195,7 +196,7 @@ export default function CTASection({ onBookTuning }: CTASectionProps) {
                 stiffness: 100,
               }}
             >
-              YOUR BIKE?
+              THE ROAD?
             </motion.span>
           </motion.h2>
 
@@ -205,12 +206,12 @@ export default function CTASection({ onBookTuning }: CTASectionProps) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9 }}
           >
-            Stop dreaming about the perfect bike. Let us forge your{' '}
+            Elevate your riding experience with our premium collection. From{' '}
             <motion.span
               className='text-red-500 font-bold relative inline-block'
               whileHover={{ scale: 1.1 }}
             >
-              mechanical nightmare
+              professional racing gear
               <motion.span
                 className='absolute -bottom-1 left-0 w-full h-1 bg-red-500 block'
                 initial={{ scaleX: 0 }}
@@ -218,8 +219,8 @@ export default function CTASection({ onBookTuning }: CTASectionProps) {
                 transition={{ duration: 1, delay: 1.5 }}
               />
             </motion.span>{' '}
-            into reality. Book your consultation today and join the ranks of
-            riders who command respect.
+            to custom parts and luxury accessories - discover the difference
+            professional-grade equipment makes.
           </motion.p>
         </motion.div>
 
@@ -235,6 +236,100 @@ export default function CTASection({ onBookTuning }: CTASectionProps) {
           viewport={{ once: true }}
           className='flex flex-col sm:flex-row gap-6 xs:gap-8 justify-center items-center px-4'
         >
+          {/* Primary CTA - Shop Now */}
+          <Link href='/shop'>
+            <motion.div
+              whileHover={{
+                scale: 1.05,
+                z: 50,
+              }}
+              whileTap={{ scale: 0.95 }}
+              className='relative group perspective-1000'
+            >
+              {/* Multiple Glow Layers */}
+              <motion.div
+                className='absolute -inset-2 bg-gradient-to-r from-red-500 via-red-600 to-red-500 rounded-xl blur-lg opacity-60'
+                animate={{
+                  opacity: [0.6, 0.9, 0.6],
+                  scale: [1, 1.05, 1],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+              />
+              <motion.div
+                className='absolute -inset-1 bg-gradient-to-r from-red-400 to-red-700 rounded-lg blur opacity-40'
+                animate={{
+                  opacity: [0.4, 0.7, 0.4],
+                  scale: [1, 1.02, 1],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                  delay: 0.5,
+                }}
+              />
+
+              <Button
+                size='lg'
+                className='btn-touch relative bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-500 hover:to-orange-600 text-white px-8 xs:px-12 sm:px-16 py-4 xs:py-6 sm:py-8 text-base xs:text-lg sm:text-xl lg:text-2xl font-bold rounded-xl border-2 border-orange-400/50 shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-orange-500/25 w-full xs:w-auto min-w-[200px] xs:min-w-[250px]'
+              >
+                {/* Shimmer Effect */}
+                <motion.div
+                  className='absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent'
+                  initial={{ x: '-100%' }}
+                  animate={{ x: '100%' }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatDelay: 3,
+                    ease: 'easeInOut',
+                  }}
+                />
+
+                <motion.span
+                  className='flex items-center gap-4 relative z-10'
+                  whileHover={{ x: 8 }}
+                >
+                  <motion.span
+                    style={{ textShadow: '0 0 0px rgba(255, 255, 255, 0)' }}
+                    animate={{
+                      textShadow: [
+                        '0 0 0px rgba(255, 255, 255, 0)',
+                        '0 0 20px rgba(255, 255, 255, 0.8)',
+                        '0 0 0px rgba(255, 255, 255, 0)',
+                      ],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: 'easeInOut',
+                    }}
+                  >
+                    SHOP NOW
+                  </motion.span>
+                  <motion.div
+                    animate={{
+                      x: [0, 8, 0],
+                      scale: [1, 1.05, 1],
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: 'easeInOut',
+                    }}
+                  >
+                    <span className='text-2xl'>→</span>
+                  </motion.div>
+                </motion.span>
+              </Button>
+            </motion.div>
+          </Link>
+
+          {/* Secondary CTA - Custom Build */}
           <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
             <DialogTrigger asChild>
               <motion.div
@@ -245,96 +340,29 @@ export default function CTASection({ onBookTuning }: CTASectionProps) {
                 whileTap={{ scale: 0.95 }}
                 className='relative group perspective-1000'
               >
-                {/* Multiple Glow Layers */}
-                <motion.div
-                  className='absolute -inset-2 bg-gradient-to-r from-red-500 via-red-600 to-red-500 rounded-xl blur-lg opacity-60'
-                  animate={{
-                    opacity: [0.6, 0.9, 0.6],
-                    scale: [1, 1.05, 1],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
-                />
-                <motion.div
-                  className='absolute -inset-1 bg-gradient-to-r from-red-400 to-red-700 rounded-lg blur opacity-40'
-                  animate={{
-                    opacity: [0.4, 0.7, 0.4],
-                    scale: [1, 1.02, 1],
-                  }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                    delay: 0.5,
-                  }}
-                />
-
                 <Button
                   size='lg'
-                  className='btn-touch relative bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-500 hover:to-orange-600 text-white px-8 xs:px-12 sm:px-16 py-4 xs:py-6 sm:py-8 text-base xs:text-lg sm:text-xl lg:text-2xl font-bold rounded-xl border-2 border-orange-400/50 shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-orange-500/25 w-full xs:w-auto min-w-[200px] xs:min-w-[250px]'
+                  variant='outline'
+                  className='relative overflow-hidden bg-transparent border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black font-black px-8 py-4 text-lg min-w-[200px] transition-all duration-300'
                 >
-                  {/* Shimmer Effect */}
                   <motion.div
-                    className='absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent'
+                    className='absolute inset-0 bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent'
                     initial={{ x: '-100%' }}
-                    animate={{ x: '100%' }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      repeatDelay: 3,
-                      ease: 'easeInOut',
-                    }}
+                    whileHover={{ x: '100%' }}
+                    transition={{ duration: 0.6, ease: 'easeInOut' }}
                   />
-
-                  <motion.span
-                    className='flex items-center gap-4 relative z-10'
-                    whileHover={{ x: 8 }}
-                  >
-                    <motion.span
-                      style={{ textShadow: '0 0 0px rgba(255, 255, 255, 0)' }}
-                      animate={{
-                        textShadow: [
-                          '0 0 0px rgba(255, 255, 255, 0)',
-                          '0 0 20px rgba(255, 255, 255, 0.8)',
-                          '0 0 0px rgba(255, 255, 255, 0)',
-                        ],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: 'easeInOut',
-                      }}
-                    >
-                      BOOK YOUR TUNING NOW
-                    </motion.span>
-                    <motion.div
-                      animate={{
-                        x: [0, 8, 0],
-                        scale: [1, 1.05, 1],
-                      }}
-                      transition={{
-                        duration: 1.5,
-                        repeat: Infinity,
-                        ease: 'easeInOut',
-                      }}
-                    >
-                      <span className='text-2xl'>→</span>
-                    </motion.div>
-                  </motion.span>
+                  <span className='relative z-10'>GET CUSTOM QUOTE</span>
                 </Button>
               </motion.div>
             </DialogTrigger>
             <DialogContent className='sm:max-w-md bg-card border-distressed'>
               <DialogHeader>
                 <DialogTitle className='text-2xl text-accent font-black'>
-                  BOOK YOUR CONSULTATION
+                  GET PREMIUM GEAR CATALOG
                 </DialogTitle>
                 <DialogDescription className='text-muted-foreground'>
-                  Tell us about your bike and what kind of mechanical dominance
-                  you&apos;re seeking.
+                  Get instant access to our exclusive collection of professional
+                  gear, custom parts, and premium accessories.
                 </DialogDescription>
               </DialogHeader>
               <form onSubmit={handleSubmit} className='space-y-4 mobile-form'>
@@ -383,16 +411,22 @@ export default function CTASection({ onBookTuning }: CTASectionProps) {
                   required
                   className='w-full p-3 bg-muted border border-border rounded-md text-foreground'
                 >
-                  <option value=''>Select Service Type</option>
-                  <option value='tuning'>Performance Tuning</option>
-                  <option value='custom-build'>Custom Build</option>
-                  <option value='upgrade'>Performance Upgrade</option>
-                  <option value='maintenance'>Maintenance & Repair</option>
-                  <option value='consultation'>General Consultation</option>
+                  <option value=''>What interests you most?</option>
+                  <option value='professional-gear'>
+                    Professional Racing Gear
+                  </option>
+                  <option value='premium-accessories'>
+                    Premium Accessories
+                  </option>
+                  <option value='custom-parts'>
+                    Custom Parts & Components
+                  </option>
+                  <option value='complete-setup'>Complete Gear Setup</option>
+                  <option value='consultation'>Product Consultation</option>
                 </select>
                 <textarea
                   name='message'
-                  placeholder='Tell us about your vision for your bike...'
+                  placeholder='Tell us about your riding style and what gear you need...'
                   value={formData.message}
                   onChange={handleInputChange}
                   rows={4}
@@ -402,7 +436,7 @@ export default function CTASection({ onBookTuning }: CTASectionProps) {
                   type='submit'
                   className='w-full bg-accent hover:bg-accent/90 text-accent-foreground font-bold'
                 >
-                  SUBMIT BOOKING REQUEST
+                  GET CATALOG ACCESS
                 </Button>
               </form>
             </DialogContent>
@@ -479,7 +513,7 @@ export default function CTASection({ onBookTuning }: CTASectionProps) {
                     delay: 1,
                   }}
                 >
-                  VIEW OUR SERVICES
+                  BROWSE CATALOG
                 </motion.span>
               </motion.span>
             </Button>

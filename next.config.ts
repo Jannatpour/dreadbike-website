@@ -1,4 +1,4 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   // Performance optimizations
@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     optimizeCss: true,
     optimizePackageImports: ['framer-motion', 'lucide-react'],
   },
-  
+
   // Image optimization
   images: {
     formats: ['image/webp', 'image/avif'],
@@ -15,6 +15,14 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 31536000, // 1 year
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
 
   // Compression

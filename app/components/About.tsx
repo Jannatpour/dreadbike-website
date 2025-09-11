@@ -98,7 +98,7 @@ export default function About() {
                 ease: 'easeInOut',
               }}
             >
-              ABOUT
+              WHY CHOOSE
             </motion.span>
             <motion.span
               className='text-red-500 block mt-2'
@@ -116,7 +116,7 @@ export default function About() {
                 textShadow: '0 0 30px rgba(183, 28, 28, 1)',
               }}
             >
-              DREADBIKE
+              DREADBIKE?
             </motion.span>
           </motion.h2>
 
@@ -126,27 +126,34 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
           >
-            At DreadBike, we specialize in{' '}
+            We're the trusted choice of{' '}
             <motion.span
               className='text-orange-500 font-semibold relative inline-block'
               whileHover={{ scale: 1.02 }}
             >
-              professional motorcycle tuning
+              championship riders worldwide
               <motion.span
                 className='absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-orange-500 to-blue-500 block'
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 transition={{ duration: 1, delay: 1.5 }}
               />
-            </motion.span>{' '}
-            and{' '}
+            </motion.span>
+            , offering{' '}
             <span className='text-blue-500 font-semibold'>
-              custom modifications
+              race-proven gear
             </span>
-            . Our certified technicians use state-of-the-art diagnostic
-            equipment and precision tools to optimize your motorcycle&apos;s
-            performance, delivering measurable improvements in power,
-            efficiency, and reliability.
+            ,{' '}
+            <span className='text-yellow-400 font-semibold'>
+              precision-engineered parts
+            </span>
+            , and{' '}
+            <span className='text-green-400 font-semibold'>
+              professional accessories
+            </span>
+            . We curate only the finest components from industry-leading
+            manufacturers, ensuring every product meets our uncompromising
+            standards for quality, durability, and performance enhancement.
           </motion.p>
         </motion.div>
 
@@ -214,17 +221,17 @@ export default function About() {
                     </div>
                   </motion.span>
                   <CardTitle className='text-3xl text-red-500 font-black'>
-                    OUR MISSION
+                    PREMIUM GEAR
                   </CardTitle>
                 </motion.div>
               </CardHeader>
               <CardContent className='relative z-10'>
                 <CardDescription className='text-lg leading-relaxed text-gray-300 group-hover:text-white transition-colors duration-300'>
-                  At DreadBike, we specialize in creating motorcycles that
-                  don&apos;t just perform—they intimidate. Our expert craftsmen
-                  combine cutting-edge technology with raw mechanical power to
-                  build machines that strike fear into the hearts of ordinary
-                  riders.
+                  We source and supply the world&apos;s finest motorcycle gear,
+                  from race-proven performance parts to luxury accessories.
+                  Every product in our catalog is hand-selected for its superior
+                  quality, innovative design, and ability to enhance your riding
+                  experience to professional levels.
                 </CardDescription>
               </CardContent>
 
@@ -304,17 +311,17 @@ export default function About() {
                     </div>
                   </motion.span>
                   <CardTitle className='text-3xl text-red-500 font-black'>
-                    WHAT WE DO
+                    CUSTOM SOLUTIONS
                   </CardTitle>
                 </motion.div>
               </CardHeader>
               <CardContent className='relative z-10'>
                 <CardDescription className='text-lg leading-relaxed text-gray-300 group-hover:text-white transition-colors duration-300'>
-                  From engine tuning and performance upgrades to complete custom
-                  builds, we transform your motorcycle into a beast. Our
-                  services include ECU remapping, exhaust systems, suspension
-                  tuning, and custom fabrication that pushes the limits of
-                  what&apos;s possible on two wheels.
+                  Beyond our premium catalog, we offer bespoke custom parts and
+                  personalized gear solutions. Our expert team works with you to
+                  create one-of-a-kind components, custom paint schemes, and
+                  specialized accessories that reflect your unique style and
+                  performance requirements.
                 </CardDescription>
               </CardContent>
 
@@ -414,7 +421,7 @@ export default function About() {
                       ease: 'easeInOut',
                     }}
                   >
-                    THE DREADBIKE DIFFERENCE
+                    PROFESSIONAL GRADE GUARANTEE
                   </motion.h3>
                 </motion.div>
 
@@ -424,15 +431,16 @@ export default function About() {
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 1, delay: 1 }}
                 >
-                  We don&apos;t follow trends—we set them. Every build is a
-                  statement, every modification a declaration of dominance. When
-                  you ride a DreadBike, you&apos;re not just on a motorcycle—
-                  you&apos;re commanding a{' '}
+                  Every product we sell comes with our ironclad guarantee of
+                  professional-grade quality. From racing-spec components to
+                  luxury accessories, we stand behind every item with
+                  comprehensive warranties and expert support. When you choose
+                  DreadBike, you&apos;re investing in{' '}
                   <motion.span
                     className='text-red-500 font-bold relative inline-block'
                     whileHover={{ scale: 1.1 }}
                   >
-                    mechanical predator
+                    proven performance
                     <motion.span
                       className='absolute -bottom-1 left-0 w-full h-1 bg-orange-500 block'
                       initial={{ scaleX: 0 }}
@@ -440,7 +448,7 @@ export default function About() {
                       transition={{ duration: 1, delay: 1.5 }}
                     />
                   </motion.span>{' '}
-                  that was born to rule the road.
+                  and unmatched reliability.
                 </motion.p>
 
                 {/* Decorative Elements */}

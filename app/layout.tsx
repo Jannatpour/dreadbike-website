@@ -3,6 +3,10 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import PerformanceMonitor from './components/PerformanceMonitor';
 import ServiceWorker from './components/ServiceWorker';
+import { CartProvider } from '@/lib/cart-context';
+import { WishlistProvider } from '@/lib/wishlist-simple';
+import { RecentlyViewedProvider } from '@/lib/recently-viewed-context';
+import { ToastProvider } from './components/Toast';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -129,9 +133,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased prevent-horizontal-scroll`}
       >
-        <PerformanceMonitor />
-        <ServiceWorker />
-        {children}
+        <CartProvider>
+          <WishlistProvider>
+            <RecentlyViewedProvider>
+              <ToastProvider>
+                <PerformanceMonitor />
+                <ServiceWorker />
+                {children}
+              </ToastProvider>
+            </RecentlyViewedProvider>
+          </WishlistProvider>
+        </CartProvider>
       </body>
     </html>
   );
